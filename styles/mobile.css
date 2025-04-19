@@ -89,10 +89,10 @@
         max-width: 99vw;
         height: 10rem;
         text-align: center;
-        border: 2px solid #8000ff4d;
+        border: 2px solid var(--darkness-button-border-color);
     }
     #dbup{
         max-width: 99vw;
-        border: 2px solid #8000ff4d;
+        border: 2px solid var(--anti-darkness-border-color);
     }
 }

@@ -1,0 +1,37 @@
+#energyText{
+    color: var(--fractal-energy-text-color);
+}
+
+#pringleButton{
+    display: none;
+    transition: 1s ease-out;
+    z-index: 2;
+    width: 17rem;
+    height: 10rem;
+    border-radius: 20%;
+    text-align: center;
+    place-content: center;
+    font-family: DosisLight, serif;
+    font-size: 0.95rem;
+    pointer-events: none;
+    transform: translate(-100%, -100%);
+    border: 1px solid var(--pringle-box-border-color);
+    background-color: var(--pringle-box-background-color);
+    color: var(--pringle-box-normal-text-color);
+}
+
+#energyTreeRespec{
+    width: 15rem;
+    height: 4rem;
+    border: 2px solid var(--energy-tree-respec-border-color);
+    background-color: var(--energy-tree-respec-background-color);
+    color: var(--energy-tree-respec-text-color);
+}
+
+#passiveEnergyHelp{
+    margin-top: 1rem;
+    color: var(--passive-energy-help-text-primary-color);
+}
+#peupHelpColorized{
+    color: var(--passive-energy-help-text-fractal-energy-color);
+}

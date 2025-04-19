@@ -172,8 +172,9 @@ function updateHyperChargeTextHTML(i, type, customElement = null, forceHideSecon
     let element = customElement ? customElement : DOM(`hyperCharge${type}${i}`)
     if(type === 'Upgrade'){
         element.innerHTML = getHyperChargeUpgradeText(i, forceHideSecondary)
-        element.style.color = isHyperchargeStable(i) ? '#20da45' : hasHypercharge(i) ? isHyperchargeSecondary(i) ? '#c281e5' : '#d5ad00' : 'gray'
-        element.style.borderColor = isHyperchargeStable(i) ? '#0e591d' : hasHypercharge(i) && isHyperchargeSecondary(i) ? '#503857' : '#615400'
+        element.className = isHyperchargeStable(i) ? 'stableHypercharge' : hasHypercharge(i) ? isHyperchargeSecondary(i) ? 'secondaryHypercharge' : 'boughtHypercharge' : 'unboughtHypercharge'
+        //element.style.color = isHyperchargeStable(i) ? '#20da45' : hasHypercharge(i) ? isHyperchargeSecondary(i) ? '#c281e5' : '#d5ad00' : 'gray'
+        //element.style.borderColor = isHyperchargeStable(i) ? '#0e591d' : hasHypercharge(i) && isHyperchargeSecondary(i) ? '#503857' : '#615400'
     }
     if(type === 'QOL') element.style.color = hasPassiveHypercharge(i) ? '#aed500' : 'gray'
 }

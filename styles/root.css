@@ -1,0 +1,374 @@
+:root {
+    /* Generic */
+    --black: #000000FF;
+
+    /* Ordinal */
+    --ordinal-color-one: #FF0000FF;
+    --ordinal-color-two: #FFA500FF;
+    --ordinal-color-three: #FFFF00FF;
+
+    /* Nav */
+    --ordinal-navigation-color: #CD5C5CFF;
+    --markup-navigation-color: #DAA520FF;
+    --boosters-navigation-color: #8080FF;
+    --collapse-navigation-color: #80ff82;
+    --obliteration-navigation-color: #d080ff;
+    --achievement-navigation-color: #bdbdbd;
+    --setting-navigation-color: #808080FF;
+
+    /* Prestige Buttons */
+    --factor-shift-button-default-text-color: #DAA520FF;
+
+    --factor-boost-button-default-text-color: #8080FF;
+
+    --collapse-button-default-text-color: #20da45;
+
+    --obliterate-button-default-text-color: #b06cdc;
+
+    /* Universal Exit Button */
+    --universal-exit-button-text-color: #b1b1b1;
+
+    /* Ordinal Buttons */
+    --ordinal-button-border-color: #610000;
+    --ordinal-button-color: #CD5C5CFF;
+
+    /* Markup */
+    --markup-tab-border-color: #785c13;
+    --markup-tab-color: #DAA520FF;
+
+    --powers-color: #DAA520FF;
+
+    --markup-button-border-color: #785c13;
+    --markup-button-background-color: #000000FF;
+    --markup-button-color: #DAA520FF;
+
+    --mobile-shift-button-border-color: #785c13;
+    --mobile-shift-button-background-color: #000000FF;
+    --mobile-shift-button-color: #DAA520FF;
+
+    --mobile-boost-button-border-color: #1e47d0;
+    --mobile-boost-button-background-color: #000000FF;
+    --mobile-boost-button-color: #8080FF;
+
+    /* AutoClickers */
+    --autoclicker-border-color: #9e6911;
+    --autoclicker-color: #CDA05CFF;
+    --autoclicker-speed-color: #FF4500FF;
+
+    /* Factors */
+    --factor-border-color: #9e6911;
+    --factor-color: #CDA05CFF;
+    --factor-effect-color: #FFA500FF;
+
+    /* Dynamic */
+    --dynamic-text-color: #DAA520FF;
+
+    /* Progress Bar */
+    --progress-bar-background-color: #1a1a1a;
+    --progress-bar-color: #1e47d0;
+
+    /* Boosters */
+    --boost-tab-border-color: #1e47d0;
+    --boost-tab-color: #8080FF;
+
+    /* BUPs */
+    --BUP-border-color: #1e47d0;
+    --BUP-color: #8080FF;
+    --charged-BUP-border-color: #b27b14;
+    --charged-BUP-color: #DAA520FF;
+
+    --BUP-refund-border-color: #1e47d0;
+    --BUP-refund-color: #8080FF;
+    --supercharge-refund-border-color: #1e47d0;
+    --supercharge-refund-color: #8080FF;
+
+    --BUP-help-text-primary-color: #565656;
+
+    /* Automation */
+    --autobuyer-border-color: #1e47d0;
+    --autobuyer-color: #8080FF;
+    --autoprestiger-border-color: #2da000;
+    --autoprestiger-color: #20da45;
+    --realm-autobuyer-border-color: #9a5650;
+    --realm-autobuyer-color: #d97a6e;
+
+    --challenge-boost-color: #FFA500FF;
+
+    --automation-text-neutral-color: #FFFFFFFF;
+
+    /* Challenges */
+    --incomplete-challenge-border-color: #1e47d0;
+    --incomplete-challenge-color: #8080FF;
+
+    --challenge-exit-border-color: #1e47d0;
+    --challenge-exit-color: #8080FF;
+
+    /* Incrementy */
+    --IUP-border-color: #6e3c9f;
+    --IUP-color: #8080FF;
+    --unbuyable-charge-button-border-color: #5d5da1;
+    --charge-button-color: #DAA520FF;
+
+    --incrementy-text-color: #8080FF;
+    /* --incrementy-dynamic-text-color: #DAA520FF; */
+    --incrementy-help-text-color: #8080FF;
+
+    /* Hierarchies */
+    --hierarchy-color: #8080FF;
+    --hierarchy-buyable-border-color: #414d78;
+    --hierachy-buyable-color: #8080FF;
+    --HUP-border-color: #631d89;
+    --HUP-color: #a680ff;
+
+    /* Overflow */
+    --booster-power-effect-text-primary-color: #FFFFFFFF;
+    --overcharge-effect-text-primary-color: #FFFFFFFF;
+    --booster-power-effect-text-secondary-color: #00FFFFFF;
+    --overcharge-effect-text-secondary-color: #DAA520FF;
+
+    --booster-power-gain-text-primary-color: #FFFFFFFF;
+    --booster-power-gain-text-secondary-color: #00FFFFFF;
+    --overcharge-gain-text-primary-color: #FFFFFFFF;
+    --overcharge-gain-text-secondary-color: #DAA520FF;
+
+    --booster-power-total-text-color: #8080FF;
+    --overcharge-total-text-color: #DA8920FF;
+
+    --booster-power-help-text-primary-color: #FFFFFFFF;
+    --booster-power-help-text-secondary-color: #8080FF;
+    --overcharge-help-text-primary-color: #FFFFFFFF;
+    --overcharge-help-text-secondary-color: #DAA520FF;
+
+    /* Collapse */
+    --collapse-tab-border-color: #2da000;
+    --collapse-tab-color: #20da45;
+
+    --darkness-navigation-border-color: #8000FF7F;
+    --darkness-navigation-text-color: #9F9FCCEA;
+
+    --purification-navigation-border-color: #8B0000FF;
+    --purification-navigation-text-color: #ce0b0b;
+
+    /* Alephs */
+    --aleph-text-primary-color: #FFFFFFFF;
+
+    --cardinals-text-color: #20da45;
+
+    --mobile-collapse-button-border-color: #2da000;
+    --mobile-collapse-button-background-color: #000000FF;
+    --mobile-collapse-button-text-color: #20da45;
+
+    --cardinal-collapse-button-border-color: #2da000;
+    --cardinal-collapse-button-background-color: #000000FF;
+    --cardinal-collapse-button-text-color: #20da45;
+
+    --aleph-total-text-primary-color: #FFFFFFFF;
+    --aleph-total-text-secondary-color: #20da45;
+
+    --collapse-help-text-primary-color: #FFFFFFFF;
+    --collapse-help-text-secondary-color: #20DA45FF;
+
+    /* CUPs */
+    --CUP-border-color: #2da000;
+    --CUP-color: #20da45;
+    --drain-border-color: #8000ff4d;
+    --drain-color: #9f9fcce1;
+
+    /* Sluggish */
+    --incomplete-sluggish-milestone-border-color: #154b00;
+    --incomplete-sluggish-milestone-background-color: #000000FF;
+    --incomplete-sluggish-milestone-text-color: #0f9329;
+
+    --sluggishness-help-text-color: #0e8626;
+
+    /* Darkness */
+    --darkness-button-border-color: #8000ff4d;
+    --darkness-button-background-color: #0D0012FF;
+    --darkness-button-color: #9f9fcce1;
+
+    --depth-border-color: #26004C4C;
+    --depth-background-color: #0D0012FF;
+    --depth-color: #9f9fcce1;
+
+    --dup-border-color: #26004C4C;
+    --dup-background-color: #000000FF;
+    --dup-color: #9f9fcce1;
+
+    --anti-darkness-border-color: #8000ff4d;
+    --anti-darkness-background-color: #12011AFF;
+    --anti-darkness-color: #9f9fcce1;
+
+    --darkness-control-border-color: #8000ff4d;
+    --darkness-control-background-color: #000000FF;
+    --darkness-control-color: #9f9fcce1;
+
+    --depth-help-text-color: #C9C9F4E0;
+
+    /* Hypercharge */
+    --unbought-hypercharge-border-color: #615400;
+    --unbought-hypercharge-text-color: #808080FF;
+    --bought-hypercharge-border-color: #615400;
+    --bought-hypercharge-text-color: #d5ad00;
+    --secondary-hypercharge-border-color: #503857;
+    --secondary-hypercharge-text-color: #c281e5;
+    --stable-hypercharge-border-color: #0e591d;
+    --stable-hypercharge-text-color: #20da45;
+
+    --passive-hypercharge-border-color: #4c6100;
+    --passive-hypercharge-text-color: #aed500;
+
+    --hypercharge-respec-border-color: #393939;
+    --hypercharge-respec-text-color: #777777;
+
+    --hypercharge-charge-row-requirement-text-color: #DAA520FF;
+    --hypercharge-row-line-color: #393939;
+
+    --hypercharge-help-text-primary-color: #808080FF;
+
+    /* Baselessness */
+    --aleph-null-text-primary-color: #FF8C00FF;
+
+    --baseless-realm-control-border-color: #6d3d00;
+    --baseless-realm-control-text-color: #ae6610;
+
+    --baseless-realm-select-border-color: #000000FF;
+    --baseless-realm-select-background-color: #000000FF;
+    --baseless-realm-select-text-color: #8B0000FF;
+
+    --baseless-shift-border-color: #785C13FF;
+    --baseless-shift-background-color: #000000FF;
+    --baseless-shift-text-primary-color: #DAA520FF;
+
+    --top-row-aleph-null-buyable-border-color: #6d3d00;
+    --top-row-aleph-null-buyable-text-color: #ae6610;
+    --bottom-row-aleph-null-buyable-border-color: #6d3d00;
+    --bottom-row-aleph-null-buyable-text-color: #ae6610;
+
+    --baselessness-help-text-color: #9e5803;
+
+    /* Realms */
+    --realm-tab-border-color: #a84a4a;
+    --realm-tab-text-color: #ce6a6a;
+
+    /* Realm BUPs */
+    --unbought-realm-BUP-border-color: #a84a4a;
+    --unbought-realm-BUP-background-color: #000000FF;
+    --unbought-realm-BUP-text-color: #ce6a6a;
+
+    --realm-booster-unlock-border-color: #a84a4a;
+    --realm-booster-unlock-text-color: #ce6a6a;
+
+    --realm-BUP-refund-border-color: #a84a4a;
+    --realm-BUP-refund-text-color: #ce6a6a;
+
+    --realm-booster-text-primary-color: #808080FF;
+
+    --realm-boost-times-primary-color: #808080FF;
+
+    /* Realm Challenges */
+    --incomplete-realm-challenge-border-color: #a84a4a;
+    --incomplete-realm-challenge-background-color: #000000FF;
+    --incomplete-realm-challenge-text-color: #ce6a6a;
+
+    --complete-realm-challenge-border-color: #5e2908;
+    --complete-realm-challenge-background-color: #733209;
+    --complete-realm-challenge-text-color: #000000FF;
+
+    --active-realm-challenge-border-color: #a84a4a;
+    --active-realm-challenge-background-color: #ce6a6a;
+    --active-realm-challenge-text-color: #211111;
+
+    --realm-challenge-effect-text-color: #B8860BFF;
+
+    /* Realm Incrementy */
+    --realm-IUP-border-color: #703d2b;
+    --realm-IUP-text-color: #ae7b56;
+
+    --realm-incrementy-text-color: #FFAA86FF;
+    --realm-incrementy-description-text-color: #ce856a;
+
+    --realm-incrementy-help-text-color: #ce856a;
+
+    /* Realm Hierarchies */
+    --realm-hierarchy-text-color: #ce6a6a;
+
+    --growth-upgrade-border-color: #a84a4a;
+    --growth-upgrade-text-color: #ce6a6a;
+    --growth-input-border-color: #522525;
+    --growth-input-text-color: #ce6a6a;
+
+    --realm-HUP-border-color: #a8634a;
+    --realm-HUP-text-color: #ce856a;
+
+    /* Purification */
+    --purification-border-color: #670000;
+
+    --aleph-omega-buyable-border-color: #650000;
+    --aleph-omega-buyable-text-color: #ce0b0b;
+
+    --beth-omega-milestone-border-color: #4b001a;
+    --beth-omega-milestone-text-color: #940525;
+
+    --aleph-omega-text-color: #8B0000FF;
+
+    /* Obliteration */
+    --obliteration-tab-border-color: #6b00a0;
+    --obliteration-tab-color: #b06cdc;
+    --fractal-energy-text-color: #ae50b4;
+
+    /* Pringles */
+    --pringle-box-border-color: #5b5b5b;
+    --pringle-box-background-color: #000000BF;
+    --pringle-box-normal-text-color: #FFFFFFFF;
+
+    /* Energy Tree */
+    --energy-tree-respec-border-color: #4e4361;
+    --energy-tree-respec-background-color: #000000FF;
+    --energy-tree-respec-text-color: #808080FF;
+
+    /* Passive Energy */
+    --passive-energy-upgrade-border-color: #6b3a9f;
+    --passive-energy-upgrade-color: #808080FF;
+
+    --passive-energy-help-text-primary-color: #FFFFFFFF;
+    --passive-energy-help-text-fractal-energy-color: #d56cdc;
+    --passive-energy-help-text-passive-energy-color: #bd80ff;
+
+    /* Stability */
+    --stable-energy-button-border-color: #2d2746;
+    --stable-energy-button-text-color: #7d5394;
+    --stable-energy-respec-border-color: #2d2746;
+    --stable-energy-respec-text-color: #7d5394;
+
+    /* Achievements */
+    --incomplete-achievement-border-color: #464646;
+    --incomplete-achievement-background-color: #151515;
+    --incomplete-achievement-text-color: #9d5700;
+
+    /* Settings */
+    --setting-tab-border-color: #808080FF;
+    --setting-tab-text-color: #A9A9A9FF;
+
+    --setting-border-color: #808080FF;
+    --setting-text-color: #A9A9A9FF;
+
+    --discord-text-color: #95d0ef;
+
+    --cloud-navigation-border-color: #7e6085;
+    --cloud-navigation-text-color: #ae6cc5;
+
+    --advanced-navigation-border-color: #501900;
+    --advanced-navigation-text-color: #c93e00;
+
+    --advanced-warning-text-color: #8B0000FF;
+
+    --delete-save-border-color: #563c3c;
+    --delete-save-text-color: #a47575;
+
+    --version-text-color: #009696;
+
+    /* Notifications */
+    --notification-border-color: #808080FF;
+    --notification-background-color: #333;
+    --notification-text-color: #FFFFFFFF;
+}

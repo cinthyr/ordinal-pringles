@@ -1,0 +1,44 @@
+#discordText{
+    color: var(--discord-text-color);
+}
+
+#galaxyTab{
+    margin-left: 0.5rem;
+    border-color: var(--cloud-navigation-border-color);
+    color: var(--cloud-navigation-text-color);
+}
+
+/* TODO: ? */
+#cloudStatus{
+    width: 20rem;
+    height: 11rem;
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
+    border-left: 2px solid #7e6085;
+}
+
+#technicalTab{
+    margin-left: 0.5rem;
+    border-color: var(--advanced-navigation-border-color);
+    color: var(--advanced-navigation-text-color);
+}
+
+#technicalWarning{
+    font-family: DosisBold, serif;
+    color: var(--advanced-warning-text-color);
+}
+
+#deleteSave{
+    border-color: var(--delete-save-border-color);
+    color: var(--delete-save-text-color);
+}
+
+#versionText{
+    margin-top: 3rem;
+    font-family: DosisBold, serif;
+    color: var(--version-text-color)
+}
+
+#s{
+    color: var(--black);
+}

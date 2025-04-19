@@ -1,0 +1,100 @@
+#factorText2{
+    margin-top: 1rem;
+    color: var(--challenge-boost-color);
+}
+
+#bupBottomText{
+    color: var(--BUP-help-text-primary-color);
+}
+
+#boostRefund{
+    width: 20rem;
+    height: 1.5rem;
+    background: black;
+    margin-top: 0.5rem;
+    border: 2px solid var(--BUP-refund-border-color);
+    color: var(--BUP-refund-color);
+}
+#chargeRefund{
+    width: 20rem;
+    height: 1.5rem;
+    background: black;
+    margin-top: 0.5rem;
+    border: 2px solid var(--supercharge-refund-border-color);
+    color: var(--supercharge-refund-color);
+}
+#chalExit{
+    width: 20rem;
+    height: 1.5rem;
+    background: black;
+    margin-top: 0.5rem;
+    border: 2px solid var(--challenge-exit-border-color);
+    color: var(--challenge-exit-color);
+}
+
+#incrementyText{
+    margin-top: 1rem;
+    color: var(--incrementy-text-color);
+}
+
+#dynamicText2{
+    margin-bottom: 0.5rem;
+    color: var(--dynamic-text-color);
+}
+
+#incrementyText2{
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--incrementy-help-text-color);
+}
+#chargeButton{
+    width: 15rem;
+    height: 5.5rem;
+    border: 2px solid var(--unbuyable-charge-button-border-color);
+    color: var(--charge-button-color);
+    background: black;
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;
+}
+
+#boosterText2{
+     color: var(--booster-power-gain-text-primary-color);
+}
+#boosterPower{
+    margin-left: 0.3rem;
+    color: var(--booster-power-gain-text-secondary-color);
+}
+
+#chargeText2{
+    color: var(--overcharge-gain-text-primary-color);
+}
+#overCharge{
+    margin-left: 0.3rem;
+    color: var(--overcharge-gain-text-secondary-color);
+}
+
+#bpTotal{
+    margin-top: 1rem;
+    color: var(--booster-power-total-text-color);
+}
+
+#boosterPowerHelp{
+    margin-top: 1rem;
+    color: var(--booster-power-help-text-primary-color);
+}
+#bpHelpColorized{
+    color: var(--booster-power-help-text-secondary-color);
+}
+
+#ocTotal{
+    margin-top: 1rem;
+    color: var(--overcharge-total-text-color);
+}
+
+#overchargeHelp{
+    margin-top: 1rem;
+    color: var(--overcharge-help-text-primary-color);
+}
+#ocHelpColorized{
+    color: var(--overcharge-help-text-secondary-color);
+}

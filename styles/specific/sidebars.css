@@ -1,0 +1,61 @@
+/* Sidebar 1 */
+
+#sidebar0{
+    width: 11rem;
+    height: 21rem;
+}
+
+#ordNav{
+    color: var(--ordinal-navigation-color);
+}
+#markupNav{
+    color: var(--markup-navigation-color);
+}
+#boostNav{
+    display: none;
+    color: var(--boosters-navigation-color);
+}
+#collapseNav{
+    display: none;
+    color: var(--collapse-navigation-color);
+}
+#obliterateNav{
+    display: none;
+    color: var(--obliteration-navigation-color);
+}
+#achNav{
+    color: var(--achievement-navigation-color);
+}
+#settingsNav{
+    color: var(--setting-navigation-color);
+}
+
+/* Sidebar 2 */
+
+#sidebar1{
+    width: 20rem;
+    height: 12rem;
+}
+
+#factorShiftButton{
+    width: 100%;
+    height: 3rem;
+    color: var(--factor-shift-button-default-text-color);
+}
+
+#factorBoostButton{
+    color: var(--factor-boost-button-default-text-color)
+}
+
+#collapseButton{
+    color: var(--collapse-button-default-text-color);
+}
+
+#obliterateButton{
+    color: var(--obliterate-button-default-text-color);
+}
+
+#header{
+    height: 4rem;
+    color: var(--universal-exit-button-text-color);
+}

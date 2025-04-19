@@ -1,0 +1,158 @@
+#darkTab{
+    border-color: var(--darkness-navigation-border-color);
+    color: var(--darkness-navigation-text-color);
+}
+
+#purificationTab{
+    border-color: var(--purification-navigation-border-color);
+    color: var(--purification-navigation-text-color);
+}
+
+#cardinalsText{
+    font-size: 1.1rem;
+    color: var(--cardinals-text-color);
+}
+
+#mobilecollapseButton{
+    min-width: 20rem;
+    height: 2rem;
+    display: none;
+    border: 2px solid var(--mobile-collapse-button-border-color);
+    background-color: var(--mobile-collapse-button-background-color);
+    color: var(--mobile-collapse-button-text-color);
+}
+
+#distributeButton{
+    min-width: 20rem;
+    height: 3rem;
+    border: 2px solid var(--cardinal-collapse-button-border-color);
+    background-color: var(--cardinal-collapse-button-background-color);
+    color: var(--cardinal-collapse-button-text-color);
+}
+
+#alephTotal{
+    color: var(--aleph-total-text-primary-color);
+}
+
+#collapseHelp{
+    margin-top: 1rem;
+    color: var(--collapse-help-text-primary-color);
+}
+#collapseHelpColorized{
+    color: var(--collapse-help-text-secondary-color);
+}
+
+#drainReset{
+    width: 15rem;
+    height: 6rem;
+    border: 2px solid var(--drain-border-color);
+    color: var(--drain-color);
+    background: black;
+    margin-left: 0.5rem;
+}
+
+#sluggishHelp{
+    margin-top: 1rem;
+    color: var(--sluggishness-help-text-color);
+}
+
+#depthDescriptor{
+    color: var(--depth-help-text-color);
+}
+
+#dbup{
+    width: 36rem;
+    height: 11rem;
+    border: 2px solid var(--anti-darkness-border-color);
+    color: var(--anti-darkness-color);
+    background: var(--anti-darkness-background-color);
+    border-left: none;
+}
+
+#hyperchargeBottomText{
+    margin-top: 1rem;
+    color: var(--hypercharge-help-text-primary-color);
+}
+
+#alephNull{
+    color: var(--aleph-null-text-primary-color);
+}
+
+#baseless{
+    width: 25rem;
+    height: 10rem;
+    border: 2px solid var(--baseless-realm-control-border-color);
+    color: var(--baseless-realm-control-text-color);
+    background: black;
+    margin-top: 0.5rem;
+    margin-right: 0.25rem;
+    font-size: 1.1rem;
+    font-family: DosisSemiBold, serif;
+}
+
+#realmSelection{
+    appearance: none;
+    font-family: DosisBold, serif;
+    font-size: 1.1rem;
+    text-align: center;
+    border: 2px solid var(--baseless-realm-select-border-color);
+    background-color: var(--baseless-realm-select-background-color);
+    color: var(--baseless-realm-select-text-color);
+}
+
+#dynamicShift{
+    margin-top: 0.5rem;
+    margin-left: 0.25rem;
+    width: 20rem;
+    height: 10rem;
+    font-family: DosisBold, serif;
+    border: 2px solid var(--baseless-shift-border-color);
+    background-color: var(--baseless-shift-background-color);
+    color: var(--baseless-shift-text-primary-color);
+}
+
+#baselessnessHelp{
+    margin-top: 2rem;
+    color: var(--baselessness-help-text-color);
+}
+
+#alephOmega{
+    margin-top: 1rem;
+    font-family: DosisSemiBold, serif;
+    color: var(--aleph-omega-text-color);
+}
+
+#rBoosterText{
+    color: var(--realm-booster-text-primary-color);
+}
+
+#rBoosterTimesText{
+    font-size: 0.8rem;
+    color: var(--realm-boost-times-primary-color);
+}
+
+#rChallengeEffectText{
+    margin-top: 1rem;
+    font-family: DosisMedium, serif;
+    color: var(--realm-challenge-effect-text-color);
+}
+
+#rIncrementyText{
+    margin-top: 1rem;
+    color: var(--realm-incrementy-text-color);
+}
+
+#realmIncrementyDesc{
+    color: var(--realm-incrementy-description-text-color);
+}
+
+#rDynamicText2{
+    margin-bottom: 0.5rem;
+    color: var(--dynamic-text-color)
+}
+
+#realmIncrementyHelp{
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--realm-incrementy-help-text-color);
+}
