@@ -51,6 +51,7 @@ const uHTML = {
         initPurityPlane()
         initStabilityHTML()
         updateGwaHTML()
+        initThemeHTML()
 
         //Load Tab Displays
         switchTab(data.nav.current)

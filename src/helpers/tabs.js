@@ -114,9 +114,14 @@ function switchSubtab(tab, mode){
 
     // Special Settings Rules
     if(mode === "settings"){
+        DOM(`technicalTab`).style.display = getSimpleSetting('technicalSettingsToggle') ? 'block' : 'none'
         if(tab === 'settingsUI'){
             DOM(`gwaifySettingContainer`).style.display = data.gword.unl ? 'flex' : 'none'
-            //DOM(`settingsToggle14`).innerHTML = `${SETTINGS_DESCS[14]} ${settingsColor(data.gword.enabled)}`
+        }
+        if(!isMobileMode()){
+            DOM(`sidebar0`).style.display = tab !== 'settingsThemes' || getSimpleSetting('sidebarsInThemes') ? 'block' : 'none'
+            DOM(`sidebar1`).style.display = tab !== 'settingsThemes' || getSimpleSetting('sidebarsInThemes') ? 'block' : 'none'
+            DOM(`game`).style.width = tab !== 'settingsThemes' || getSimpleSetting('sidebarsInThemes') ? 'calc(100% - 32rem)' : '100%'
         }
     }
 }

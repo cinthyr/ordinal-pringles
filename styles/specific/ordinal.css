@@ -1,0 +1,23 @@
+#ordinal {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: inline-block;
+    max-width: 100%;
+
+    font-family: DosisSemiBold, serif;
+    font-size: 1.8rem;
+    background-image: linear-gradient(90deg, var(--ordinal-color-one), var(--ordinal-color-two), var(--ordinal-color-three));
+    background-clip: text;
+    -webkit-background-clip: text;
+
+    color: transparent;
+    white-space: nowrap;
+
+    margin-bottom: 1rem;
+}
+
+#ordinalContainer {
+    padding: 0 20px;
+    border-bottom: 1px solid gray;
+    max-height: 4rem;
+}

@@ -39,6 +39,7 @@ function ordinalDisplay(type='', ord=data.ord.ordinal, over=data.ord.over, base=
 function changeTrim(x){
     if (isNaN(Math.floor(x))) return showNotification('Invalid Input!')
     data.ord.trim = Math.floor(x)
+    DOM(`settingtrimSetting`).innerHTML = displaySetting(getSettingIndexFromID('trimSetting'))
 }
 
 // Updates the Ordinal's HTML

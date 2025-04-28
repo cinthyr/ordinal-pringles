@@ -1,5 +1,5 @@
 body {
-    background: black;
+    background: var(--main-background-color);
     touch-action: pan-x pan-y;
     font-family: DosisLight, serif;
     display: flex;
@@ -35,6 +35,13 @@ a:active, a:link, a:visited {
     z-index: 3;
 }
 
+#game{
+    width: calc(100% - 32rem);
+    height: 100%;
+    overflow: scroll;
+    position: relative;
+}
+
 @font-face {
     font-family: 'DosisBold';
     src: url(Dosis/static/Dosis-Bold.ttf);
@@ -68,4 +75,16 @@ a:active, a:link, a:visited {
 @font-face {
     font-family: 'DosisSemiBold';
     src: url(Dosis/static/Dosis-SemiBold.ttf);
+}
+
+@keyframes rotate {
+    to {
+        --angle: 360deg;
+    }
+}
+
+@property --angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
 }

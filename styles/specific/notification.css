@@ -1,0 +1,16 @@
+#notification{
+    position: fixed;
+    right: -40rem;
+    background-color: var(--notification-background-color);
+    color: var(--notification-text-color);
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    border: 2px solid var(--notification-border-color);
+    transition: right 0.5s ease-in-out;
+    z-index: 1;
+    font-family: DosisLight, serif;
+}
+
+#notification.show {
+    right: 0;
+}

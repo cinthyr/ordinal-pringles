@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="styles/specific/sidebars.css"/>
     <link rel="stylesheet" type="text/css" href="styles/specific/modal.css"/>
     <link rel="stylesheet" type="text/css" href="styles/specific/tooltip.css"/>
+    <link rel="stylesheet" type="text/css" href="styles/specific/notification.css"/>
     <link rel="stylesheet" type="text/css" href="styles/specific/ordinal.css"/>
     <link rel="stylesheet" type="text/css" href="styles/specific/markup.css"/>
     <link rel="stylesheet" type="text/css" href="styles/specific/boosters.css"/>
@@ -49,6 +50,7 @@
     <script defer src="src/minor/settings.js"></script>
     <script defer src="src/helpers/worldStatus.js"></script>
     <script defer src="src/minor/adaptive.js"></script>
+    <script defer src="src/minor/themes.js"></script>
 
     <script defer src="src/obliterate/stability.js"></script>
     <script defer src="src/obliterate/purity.js"></script>
@@ -371,7 +373,6 @@
                 </button>
                 <button class="dupControl" id="dupC0" onclick="darknessControl(0)">Enable Negative Charge Gain</button>
                 <button class="dupControl" id="dupC1" onclick="darknessControl(1)">Reset Negative Charge</button>
-                </button>
             </div>
         </div>
         <div class="tab" id="hyperSubPage">
@@ -553,8 +554,8 @@
             <button class="settingsTabButton" id="savingTab" onclick="switchSubtab('saving', 'settings')"
                     style="margin-left: 0.5rem">Saving
             </button>
-            <button class="settingsTabButton" id="galaxyTab" onclick="switchSubtab('galaxy', 'settings')">Cloud</button>
-            <button class="settingsTabButton" id="technicalTab" onclick="switchSubtab('settingsTech', 'settings')">Advanced</button>
+            <button class="settingsTabButton rainbow" id="themeTab" style="margin-left: 0.5rem; color: wheat" onclick="switchSubtab('settingsThemes', 'settings')">Themes</button>
+            <button class="settingsTabButton" id="technicalTab" onclick="switchSubtab('settingsTech', 'settings')">Technical</button>
         </div>
         <div class="tab" id="settingsGameSubPage"></div>
         <div class="tab" id="settingsConfirmationSubPage"></div>
@@ -574,22 +575,32 @@
             <span class="centeredTexts" id="technicalWarning">Changing these could have unintended consequences!!!</span>
         </div>
         <div class="tab" id="savingSubPage">
-            <button class="setting" onclick="save()">Manual Save</button>
-            <button class="setting" onclick="copySaveToClipboard()">Export your Save</button>
-            <button class="setting" onclick="downloadSave()">Download your Save</button>
-            <button class="setting" onclick="createPrompt('Import SaveData', importSave, true)">Import your
-                Save
-            </button>
-            <button class="setting" id="deleteSave" onclick="createConfirmation('Are you sure?', 'Are you absolutely sure you want to do this?\nThis will export your save (just in case) but delete your save from LocalStorage.', 'No Way!', 'Yes, I understand the consequences.', fullReset)">Delete your Save</button>
-        </div>
-        <div class="tab" id="galaxySubPage">
-            <div class="row flexBox">
-                <div class="cloudButton" id="cloudStatus">You must be logged in on <a href="https://galaxy.click/play/8" target="_blank">Galaxy</a> to use Cloud saving!<br><br>Galaxy players are able to enjoy the benefits of automatic Cloud saving every five minutes!</div>
+            <div class="row flexBox" style="margin-top: 0.5rem;">
                 <div class="column flexBox">
-                    <button class="cloudButton" id="cloudLoad" style="border-top-right-radius: 16px; border-bottom: none;" onclick="loadFromCloud()">Load from the Galaxy Cloud (Slot 0)</button>
-                    <button class="cloudButton" id="cloudSave" style="border-bottom-right-radius: 16px" onclick="saveToCloud()">Save to the Galaxy Cloud (Slot 0)</button>
+                    <button id="manualSave" class="saveControl" onclick="save()">Manual Save</button>
+                    <button class="saveControl" onclick="copySaveToClipboard()">Export your Save</button>
+                    <button class="saveControl" onclick="downloadSave()">Download your Save</button>
+                    <button class="saveControl" onclick="createPrompt('Import SaveData', importSave, true)">Import your Save</button>
+                    <button class="saveControl" style="border-bottom-left-radius: 16px; border-bottom-right-radius: 16px;" id="deleteSave" onclick="createConfirmation('Are you sure?', 'Are you absolutely sure you want to do this?\nThis will export your save (just in case) but delete your save from LocalStorage.', 'No Way!', 'Yes, I understand the consequences.', fullReset)">Delete your Save</button>
+                </div>
+                <div class="column flexBox" style="margin-left: 2rem">
+                    <div class="cloudButton" id="cloudStatus">You must be logged in on <a href="https://galaxy.click/play/8" target="_blank">Galaxy</a> to use Cloud saving!<br><br>Galaxy players are able to enjoy the benefits of automatic Cloud saving every five minutes!</div>
+                    <div class="row flexBox">
+                        <button class="cloudButton" id="cloudLoad" style="border-bottom-left-radius: 16px" onclick="loadFromCloud()">Load from the Galaxy Cloud (Slot 0)</button>
+                        <button class="cloudButton" id="cloudSave" style="border-bottom-right-radius: 16px; border-left: none;" onclick="saveToCloud()">Save to the Galaxy Cloud (Slot 0)</button>
+                    </div>
                 </div>
             </div>
+        </div>
+        <div class="tab flexBox" id="settingsThemesSubPage">
+            <div id="colorPicker">
+                <div id="colorGradientBox">
+                    <div id="colorSelectorDot"></div>
+                </div>
+                <input type="range" id="hueSlider" min="0" max="360" value="0">
+            </div>
+            <span class="centeredTexts" style="margin-bottom: 1rem">⚠ Proceed with caution! Themes are still under heavy development! ⚠<br>As of right now, colors which are changed through JS are still not accessible through the Theme Editor! This means things like completed Challenge colors cannot be modified.<br>Additionally, the Sidebars are currently hidden in this tab (this can be toggled in UI Settings) to save screen space due to how much text there is.</span>
+            <div id="cssVariablesContainer"></div>
         </div>
         <div class="centeredTexts" id="versionText">Version</div>
         <div class="centeredTexts" id="s">Import 'gwa' to unlock a secret!</div>

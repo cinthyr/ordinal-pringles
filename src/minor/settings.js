@@ -129,6 +129,7 @@ const settingsData = [
 
     {
         type: 'UI',
+        id: 'trimSetting',
         desc: 'Change Max Ordinal Display Length',
 
         onclick: () => createPrompt('Input New Length', changeTrim, true),
@@ -191,10 +192,24 @@ const settingsData = [
     {
         type: 'UI',
         id: 'noColorPringles',
-        desc: 'Differentiate Pringles Without Color Confirmation',
+        desc: 'Differentiate Pringles Without Color',
         default: true,
 
         doRefresh: true
+    },
+    {
+        type: 'UI',
+        id: 'sidebarsInThemes',
+        desc: 'Display the Sidebars in Theme Settings',
+        default: false
+    },
+    {
+        type: 'UI',
+        id: 'technicalSettingsToggle',
+        desc: 'Display Technical Settings',
+        default: false,
+
+        onclick: () => DOM(`technicalTab`).style.display = getSimpleSetting('technicalSettingsToggle') ? 'block' : 'none'
     },
 
     {
@@ -224,6 +239,7 @@ function updateSetting(i){
     DOM(`setting${settingData.id}`).innerHTML = displaySetting(i)
 
     if(settingData.doRefresh) saveAndReload()
+    if(settingData.onclick !== undefined) settingData.onclick()
 }
 
 function makeNewSetting(i){
@@ -262,8 +278,7 @@ function makeSettingUI(i){
     setting.id = `setting${settingData.id}`
     setting.innerHTML = displaySetting(i)
 
-    if(settingData.onclick !== undefined) setting.onclick = settingData.onclick
-    else if(settingData.isMulti) setting.onclick = () => switchMulti(i)
+    if(settingData.isMulti) setting.onclick = () => switchMulti(i)
     else setting.onclick = () => updateSetting(i)
 
     container.appendChild(setting)
@@ -273,6 +288,12 @@ function initSettings(){
     for (let i = 0; i < settingsData.length; i++) {
         makeNewSetting(i)
         makeSettingUI(i)
+    }
+}
+
+function getSettingIndexFromID(id){
+    for (let i = 0; i < settingsData.length; i++) {
+        if(settingsData[i].id === id) return i
     }
 }
 

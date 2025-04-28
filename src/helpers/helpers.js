@@ -98,3 +98,14 @@ function gwaToggle() {
     updateGwaHTML()
 }
 
+function getScrollOffsets(element) {
+    let x = 0;
+    let y = 0;
+    while (element) {
+        x += element.scrollLeft || 0
+        y += element.scrollTop || 0
+        element = element.parentElement
+    }
+    return { x, y }
+}
+

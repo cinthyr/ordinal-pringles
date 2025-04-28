@@ -1,6 +1,10 @@
 :root {
-    /* Generic */
-    --black: #000000FF;
+    /* Generic, excluded from Themes */
+    --generic-black: #000000FF;
+    --generic-gray: #808080FF;
+
+    /* Main */
+    --main-background-color: #000000FF;
 
     /* Ordinal */
     --ordinal-color-one: #FF0000FF;
