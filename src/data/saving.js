@@ -39,8 +39,8 @@ function unpackSave(main=getDefaultPlayer(), data) {
     if (typeof data === "object") {
         Object.keys(data).forEach(i => {
             if (main[i] instanceof Decimal) {
-                main[i] = D(data[i]!==null?data[i]:main[i])
-            } else if (typeof main[i]  == "object") {
+                main[i] = D(data[i] !== null ? data[i] : main[i])
+            } else if (typeof main[i] === "object") {
                 unpackSave(main[i], data[i])
             } else {
                 main[i] = data[i]

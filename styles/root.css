@@ -12,13 +12,13 @@
     --ordinal-color-three: #FFFF00FF;
 
     /* Nav */
-    --ordinal-navigation-color: #CD5C5CFF;
-    --markup-navigation-color: #DAA520FF;
-    --boosters-navigation-color: #8080FF;
-    --collapse-navigation-color: #80ff82;
-    --obliteration-navigation-color: #d080ff;
-    --achievement-navigation-color: #bdbdbd;
-    --setting-navigation-color: #808080FF;
+    --ordinal-navigation-text-color: #CD5C5CFF;
+    --markup-navigation-text-color: #DAA520FF;
+    --boosters-navigation-text-color: #8080FF;
+    --collapse-navigation-text-color: #80ff82;
+    --obliteration-navigation-text-color: #d080ff;
+    --achievement-navigation-text-color: #bdbdbd;
+    --setting-navigation-text-color: #808080FF;
 
     /* Prestige Buttons */
     --factor-shift-button-default-text-color: #DAA520FF;
@@ -34,95 +34,95 @@
 
     /* Ordinal Buttons */
     --ordinal-button-border-color: #610000;
-    --ordinal-button-color: #CD5C5CFF;
+    --ordinal-button-text-color: #CD5C5CFF;
 
     /* Markup */
     --markup-tab-border-color: #785c13;
-    --markup-tab-color: #DAA520FF;
+    --markup-tab-text-color: #DAA520FF;
 
-    --powers-color: #DAA520FF;
+    --powers-text-color: #DAA520FF;
 
     --markup-button-border-color: #785c13;
     --markup-button-background-color: #000000FF;
-    --markup-button-color: #DAA520FF;
+    --markup-button-text-color: #DAA520FF;
 
     --mobile-shift-button-border-color: #785c13;
     --mobile-shift-button-background-color: #000000FF;
-    --mobile-shift-button-color: #DAA520FF;
+    --mobile-shift-button-text-color: #DAA520FF;
 
     --mobile-boost-button-border-color: #1e47d0;
     --mobile-boost-button-background-color: #000000FF;
-    --mobile-boost-button-color: #8080FF;
+    --mobile-boost-button-text-color: #8080FF;
 
     /* AutoClickers */
     --autoclicker-border-color: #9e6911;
-    --autoclicker-color: #CDA05CFF;
-    --autoclicker-speed-color: #FF4500FF;
+    --autoclicker-text-color: #CDA05CFF;
+    --autoclicker-speed-text-color: #FF4500FF;
 
     /* Factors */
     --factor-border-color: #9e6911;
-    --factor-color: #CDA05CFF;
-    --factor-effect-color: #FFA500FF;
+    --factor-text-color: #CDA05CFF;
+    --factor-effect-text-color: #FFA500FF;
 
     /* Dynamic */
     --dynamic-text-color: #DAA520FF;
 
     /* Progress Bar */
     --progress-bar-background-color: #1a1a1a;
-    --progress-bar-color: #1e47d0;
+    --progress-bar-fill-color: #1e47d0;
 
     /* Boosters */
     --boost-tab-border-color: #1e47d0;
-    --boost-tab-color: #8080FF;
+    --boost-tab-text-color: #8080FF;
 
     /* BUPs */
     --BUP-border-color: #1e47d0;
-    --BUP-color: #8080FF;
+    --BUP-text-color: #8080FF;
     --charged-BUP-border-color: #b27b14;
-    --charged-BUP-color: #DAA520FF;
+    --charged-BUP-text-color: #DAA520FF;
 
     --BUP-refund-border-color: #1e47d0;
-    --BUP-refund-color: #8080FF;
+    --BUP-refund-text-color: #8080FF;
     --supercharge-refund-border-color: #1e47d0;
-    --supercharge-refund-color: #8080FF;
+    --supercharge-refund-text-color: #8080FF;
 
     --BUP-help-text-primary-color: #565656;
 
     /* Automation */
     --autobuyer-border-color: #1e47d0;
-    --autobuyer-color: #8080FF;
+    --autobuyer-text-color: #8080FF;
     --autoprestiger-border-color: #2da000;
-    --autoprestiger-color: #20da45;
+    --autoprestiger-text-color: #20da45;
     --realm-autobuyer-border-color: #9a5650;
-    --realm-autobuyer-color: #d97a6e;
+    --realm-autobuyer-text-color: #d97a6e;
 
-    --challenge-boost-color: #FFA500FF;
+    --challenge-boost-text-color: #FFA500FF;
 
     --automation-text-neutral-color: #FFFFFFFF;
 
     /* Challenges */
     --incomplete-challenge-border-color: #1e47d0;
-    --incomplete-challenge-color: #8080FF;
+    --incomplete-challenge-text-color: #8080FF;
 
     --challenge-exit-border-color: #1e47d0;
-    --challenge-exit-color: #8080FF;
+    --challenge-exit-text-color: #8080FF;
 
     /* Incrementy */
     --IUP-border-color: #6e3c9f;
-    --IUP-color: #8080FF;
+    --IUP-text-color: #8080FF;
     --unbuyable-charge-button-border-color: #5d5da1;
-    --charge-button-color: #DAA520FF;
+    --charge-button-text-color: #DAA520FF;
 
     --incrementy-text-color: #8080FF;
     /* --incrementy-dynamic-text-color: #DAA520FF; */
     --incrementy-help-text-color: #8080FF;
 
     /* Hierarchies */
-    --hierarchy-color: #8080FF;
+    --hierarchy-text-color: #8080FF;
     --hierarchy-buyable-border-color: #414d78;
     --hierachy-buyable-color: #8080FF;
     --HUP-border-color: #631d89;
-    --HUP-color: #a680ff;
+    --HUP-text-color: #a680ff;
 
     /* Overflow */
     --booster-power-effect-text-primary-color: #FFFFFFFF;
@@ -145,7 +145,7 @@
 
     /* Collapse */
     --collapse-tab-border-color: #2da000;
-    --collapse-tab-color: #20da45;
+    --collapse-tab-text-color: #20da45;
 
     --darkness-navigation-border-color: #8000FF7F;
     --darkness-navigation-text-color: #9F9FCCEA;
@@ -174,9 +174,9 @@
 
     /* CUPs */
     --CUP-border-color: #2da000;
-    --CUP-color: #20da45;
+    --CUP-text-color: #20da45;
     --drain-border-color: #8000ff4d;
-    --drain-color: #9f9fcce1;
+    --drain-text-color: #9f9fcce1;
 
     /* Sluggish */
     --incomplete-sluggish-milestone-border-color: #154b00;
@@ -188,23 +188,23 @@
     /* Darkness */
     --darkness-button-border-color: #8000ff4d;
     --darkness-button-background-color: #0D0012FF;
-    --darkness-button-color: #9f9fcce1;
+    --darkness-button-text-color: #9f9fcce1;
 
     --depth-border-color: #26004C4C;
     --depth-background-color: #0D0012FF;
-    --depth-color: #9f9fcce1;
+    --depth-text-color: #9f9fcce1;
 
     --dup-border-color: #26004C4C;
     --dup-background-color: #000000FF;
-    --dup-color: #9f9fcce1;
+    --dup-text-color: #9f9fcce1;
 
     --anti-darkness-border-color: #8000ff4d;
     --anti-darkness-background-color: #12011AFF;
-    --anti-darkness-color: #9f9fcce1;
+    --anti-darkness-text-color: #9f9fcce1;
 
     --darkness-control-border-color: #8000ff4d;
     --darkness-control-background-color: #000000FF;
-    --darkness-control-color: #9f9fcce1;
+    --darkness-control-text-color: #9f9fcce1;
 
     --depth-help-text-color: #C9C9F4E0;
 
@@ -332,7 +332,7 @@
 
     /* Passive Energy */
     --passive-energy-upgrade-border-color: #6b3a9f;
-    --passive-energy-upgrade-color: #808080FF;
+    --passive-energy-upgrade-text-color: #808080FF;
 
     --passive-energy-help-text-primary-color: #FFFFFFFF;
     --passive-energy-help-text-fractal-energy-color: #d56cdc;
@@ -361,10 +361,10 @@
     --cloud-navigation-border-color: #7e6085;
     --cloud-navigation-text-color: #ae6cc5;
 
-    --advanced-navigation-border-color: #501900;
-    --advanced-navigation-text-color: #c93e00;
+    --technical-navigation-border-color: #501900;
+    --technical-navigation-text-color: #c93e00;
 
-    --advanced-warning-text-color: #8B0000FF;
+    --technical-warning-text-color: #8B0000FF;
 
     --delete-save-border-color: #563c3c;
     --delete-save-text-color: #a47575;

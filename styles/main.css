@@ -34,21 +34,21 @@
     margin-left: 0.3rem;
     background: black;
     border: 2px solid var(--markup-tab-border-color);
-    color: var(--markup-tab-color);
+    color: var(--markup-tab-text-color);
 }
 .ordButtons{
     width: 15rem;
     height: 2rem;
     border: 2px solid var(--ordinal-button-border-color);
     margin-top: 0.3rem;
-    color: var(--ordinal-button-color);
+    color: var(--ordinal-button-text-color);
     background: black;
 }
 .automation{
     width: 15rem;
     min-height: 2rem;
     border: 2px solid var(--autoclicker-border-color);
-    color: var(--autoclicker-color);
+    color: var(--autoclicker-text-color);
     background: black;
     margin-left: 0.5rem;
 }
@@ -56,7 +56,7 @@
     width: 15rem;
     min-height: 2rem;
     border: 2px solid var(--factor-border-color);
-    color: var(--factor-color);
+    color: var(--factor-text-color);
     background: black;
     margin-top: 0.3rem;
 }
@@ -67,13 +67,13 @@
     margin-left: 0.3rem;
     background: black;
     border: 2px solid var(--boost-tab-border-color);
-    color: var(--boost-tab-color);
+    color: var(--boost-tab-text-color);
 }
 .bup{
     width: 13rem;
     height: 6rem;
     border: 2px solid var(--BUP-border-color);
-    color: var(--BUP-color);
+    color: var(--BUP-text-color);
     background: black;
     margin-top: 0.5rem;
     margin-left: 0.5rem;
@@ -82,7 +82,7 @@
     width: 13rem;
     height: 6rem;
     border: 2px solid var(--charged-BUP-border-color);
-    color: var(--charged-BUP-color);
+    color: var(--charged-BUP-text-color);
     background: black;
     margin-top: 0.5rem;
     margin-left: 0.5rem;
@@ -91,7 +91,7 @@
     width: 15rem;
     height: 5.5rem;
     border: 2px solid var(--IUP-border-color);
-    color: var(--IUP-color);
+    color: var(--IUP-text-color);
     background: black;
     margin-top: 0.5rem;
     margin-left: 0.5rem;
@@ -102,7 +102,7 @@
     width: 10rem;
     min-height: 2rem;
     border: 2px solid var(--autobuyer-border-color);
-    color: var(--autobuyer-color);
+    color: var(--autobuyer-text-color);
     background: black;
     margin-left: 0.5rem;
 }
@@ -111,7 +111,7 @@
     width: 10rem;
     min-height: 2rem;
     border: 2px solid var(--autobuyer-border-color);
-    color: var(--autobuyer-color);
+    color: var(--autobuyer-text-color);
     background: black;
     margin-left: 0.5rem;
 }
@@ -120,7 +120,7 @@
     width: 13rem;
     min-height: 2rem;
     border: 2px solid var(--autoprestiger-border-color);
-    color: var(--autoprestiger-color);
+    color: var(--autoprestiger-text-color);
     background: black;
     margin-left: 0.5rem;
 }
@@ -129,7 +129,7 @@
     width: 10rem;
     min-height: 2rem;
     border: 2px solid var(--realm-autobuyer-border-color);
-    color: var(--realm-autobuyer-color);
+    color: var(--realm-autobuyer-text-color);
     background: black;
     margin-left: 0.5rem;
 }
@@ -140,7 +140,7 @@
     width: 20rem;
     height: 12rem;
     border: 2px solid var(--incomplete-challenge-border-color);
-    color: var(--incomplete-challenge-color);
+    color: var(--incomplete-challenge-text-color);
     background: black;
     margin-top: 0.5rem;
     margin-left: 0.5rem;
@@ -163,7 +163,7 @@
 }
 .hierarchies{
     font-size: 2rem;
-    color: var(--hierarchy-color);
+    color: var(--hierarchy-text-color);
 }
 .hb0{
     width: 15rem;
@@ -189,7 +189,7 @@
     width: 15rem;
     height: 6rem;
     border: 2px solid var(--HUP-border-color);
-    color: var(--HUP-color);
+    color: var(--HUP-text-color);
     background: black;
 }
 .bpEffectContainer{
@@ -248,7 +248,7 @@
     margin-left: 0.3rem;
     background: black;
     border: 2px solid var(--collapse-tab-border-color);
-    color: var(--collapse-tab-color);
+    color: var(--collapse-tab-text-color);
 }
 .collapseTabButton:hover{
     background: #222222;
@@ -280,7 +280,7 @@
     width: 15rem;
     height: 6rem;
     border: 2px solid var(--CUP-border-color);
-    color: var(--CUP-color);
+    color: var(--CUP-text-color);
     background: black;
     margin-left: 0.5rem;
 }
@@ -288,7 +288,7 @@
     width: 15rem;
     height: 4rem;
     border: 2px solid var(--drain-border-color);
-    color: var(--drain-color);
+    color: var(--drain-text-color);
     background: black;
     margin-left: 0.5rem;
 }
@@ -304,14 +304,14 @@
     width: 20rem;
     height: 5rem;
     border: 2px solid var(--darkness-button-border-color);
-    color: var(--darkness-button-color);
+    color: var(--darkness-button-text-color);
     background: var(--darkness-button-background-color);
 }
 .depthButton{
     width: 10rem;
     height: 1.5rem;
     border: 2px solid var(--depth-border-color);
-    color: var(--depth-color);
+    color: var(--depth-text-color);
     background: var(--depth-background-color);
     margin: 0.5rem;
 }
@@ -319,7 +319,7 @@
     width: 17rem;
     height: 6rem;
     border: 2px solid var(--dup-border-color);
-    color: var(--dup-color);
+    color: var(--dup-text-color);
     background: var(--dup-background-color);
     margin-top: 0.5rem;
     margin-left: 0.5rem;
@@ -328,7 +328,7 @@
     width: 10rem;
     height: 5rem;
     border: 2px solid var(--darkness-control-border-color);
-    color: var(--darkness-control-color);
+    color: var(--darkness-control-text-color);
     background: var(--darkness-control-background-color);
     margin-top: 0.5rem;
     margin-left: 0.5rem;
@@ -470,7 +470,7 @@
 }
 .passiveUpgrade{
     border: 2px solid var(--passive-energy-upgrade-border-color);
-    color: var(--passive-energy-upgrade-color);
+    color: var(--passive-energy-upgrade-text-color);
     background: black;
     margin-top: 0.5rem;
     margin-left: 0.25rem;
@@ -673,7 +673,7 @@
     margin-top: 0.5rem;
     color: var(--setting-tab-text-color);
     background: black;
-    border: 2px solid var(--setting-tab-border-color);
+    border: 2px solid var(--setting-border-color);
 }
 .settingsTabButton:hover{
     background: #222222;
@@ -687,6 +687,29 @@
     width: 2rem;
     height: 1rem;
     border: 2px solid;
+}
+.savedThemeWrapper{
+    position: relative;
+    display: inline-block;
+}
+.savedTheme{
+    width: 18rem;
+    height: 3rem;
+    margin-top: 0.5rem;
+    color: var(--setting-text-color);
+    background: black;
+    border: 2px solid var(--setting-border-color);
+}
+.savedThemeReset{
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    width: 4rem;
+    height: 1.25rem;
+    color: var(--setting-text-color);
+    background: black;
+    border: 2px solid var(--setting-border-color);
+    border-top-left-radius: 12%;
 }
 
 #settingsNav{

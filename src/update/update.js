@@ -8,6 +8,9 @@ const uHTML = {
         updateAdaptiveHTML()
     },
     load(){
+        // Load Themes
+        loadTheme()
+
         //Show and Hide things, based on data
         DOM('boostNav').style.display = data.boost.times>0 || data.collapse.times>0 || data.obliterate.times>0?'block':'none'
         DOM('collapseNav').style.display = data.collapse.times > 0 || data.obliterate.times>0?'block':'none'

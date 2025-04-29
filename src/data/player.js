@@ -35,6 +35,7 @@ function getDefaultPlayer() {
         stability: { energy:Array(3).fill(0) },
 
         autoStatus: {enabled: Array(9).fill(false)},
+        theme: { currentTheme: makeCSSVariableArray(), defaultTheme: makeCSSVariableArray(), savedThemes: Array(3).fill(0), settings: Array(themeSettings.length).fill(true) },
         settings: {},
         successorClicks: 0,
         lastTick: 0,

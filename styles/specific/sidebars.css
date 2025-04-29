@@ -6,28 +6,28 @@
 }
 
 #ordNav{
-    color: var(--ordinal-navigation-color);
+    color: var(--ordinal-navigation-text-color);
 }
 #markupNav{
-    color: var(--markup-navigation-color);
+    color: var(--markup-navigation-text-color);
 }
 #boostNav{
     display: none;
-    color: var(--boosters-navigation-color);
+    color: var(--boosters-navigation-text-color);
 }
 #collapseNav{
     display: none;
-    color: var(--collapse-navigation-color);
+    color: var(--collapse-navigation-text-color);
 }
 #obliterateNav{
     display: none;
-    color: var(--obliteration-navigation-color);
+    color: var(--obliteration-navigation-text-color);
 }
 #achNav{
-    color: var(--achievement-navigation-color);
+    color: var(--achievement-navigation-text-color);
 }
 #settingsNav{
-    color: var(--setting-navigation-color);
+    color: var(--setting-navigation-text-color);
 }
 
 /* Sidebar 2 */

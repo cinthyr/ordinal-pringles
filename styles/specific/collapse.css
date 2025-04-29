@@ -46,7 +46,7 @@
     width: 15rem;
     height: 6rem;
     border: 2px solid var(--drain-border-color);
-    color: var(--drain-color);
+    color: var(--drain-text-color);
     background: black;
     margin-left: 0.5rem;
 }
@@ -64,7 +64,7 @@
     width: 36rem;
     height: 11rem;
     border: 2px solid var(--anti-darkness-border-color);
-    color: var(--anti-darkness-color);
+    color: var(--anti-darkness-text-color);
     background: var(--anti-darkness-background-color);
     border-left: none;
 }

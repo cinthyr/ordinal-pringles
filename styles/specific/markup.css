@@ -1,6 +1,6 @@
 #powersText{
     margin-top: 1rem;
-    color: var(--powers-color);
+    color: var(--powers-text-color);
 }
 
 #markupButton{
@@ -8,7 +8,7 @@
     height: 2rem;
     border: 2px solid var(--markup-button-border-color);
     background-color: var(--markup-button-background-color);
-    color: var(--markup-button-color);
+    color: var(--markup-button-text-color);
 }
 
 #mobilefactorShiftButton{
@@ -16,7 +16,7 @@
     height: 3rem;
     border: 2px solid var(--mobile-shift-button-border-color);
     background-color: var(--mobile-shift-button-background-color);
-    color: var(--mobile-shift-button-color);
+    color: var(--mobile-shift-button-text-color);
 }
 
 #mobilefactorBoostButton{
@@ -26,15 +26,15 @@
     display: none;
     border: 2px solid var(--mobile-boost-button-border-color);
     background-color: var(--mobile-boost-button-background-color);
-    color: var(--mobile-boost-button-color);
+    color: var(--mobile-boost-button-text-color);
 }
 
 #factorText{
-    color: var(--factor-effect-color);
+    color: var(--factor-effect-text-color);
 }
 
 #autoText{
-    color: var(--autoclicker-speed-color);
+    color: var(--autoclicker-speed-text-color);
 }
 
 #dynamicText{
@@ -54,5 +54,5 @@
     color: black;
     text-align: center;
     font-family: DosisBold, serif;
-    background-color: var(--progress-bar-color);
+    background-color: var(--progress-bar-fill-color);
 }

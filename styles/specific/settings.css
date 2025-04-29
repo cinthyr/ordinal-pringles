@@ -19,6 +19,8 @@
     grid-template-columns: repeat(auto-fit, minmax(10rem, 25rem));
     gap: 0.5rem;
     width: 100vw;
+    justify-items: center;
+    place-content: center;
 }
 
 #colorPicker {
@@ -77,6 +79,15 @@
     cursor: pointer;
 }
 
+#themeReset{
+    width: 15rem;
+    height: 3rem;
+    margin-top: 0.5rem;
+    color: var(--setting-text-color);
+    background: black;
+    border: 2px solid var(--setting-border-color);
+}
+
 /* TODO: ? */
 #cloudStatus{
     width: 20rem;
@@ -88,13 +99,13 @@
 
 #technicalTab{
     margin-left: 0.5rem;
-    border-color: var(--advanced-navigation-border-color);
-    color: var(--advanced-navigation-text-color);
+    border-color: var(--technical-navigation-border-color);
+    color: var(--technical-navigation-text-color);
 }
 
 #technicalWarning{
     font-family: DosisBold, serif;
-    color: var(--advanced-warning-text-color);
+    color: var(--technical-warning-text-color);
 }
 
 #deleteSave{

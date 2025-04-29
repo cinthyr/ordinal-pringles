@@ -12,14 +12,21 @@ const themeGlobals = {
     currentHue: 0
 }
 
+const themeSettings = [
+    {
+        desc: 'Persist Current Theme on Refresh',
+    }
+]
+
 function getCSSVariable(name, autofillPrefix = true){
     if(autofillPrefix) return ROOT_STYLES.getPropertyValue(`--${name}`)
     return ROOT_STYLES.getPropertyValue(name)
 }
 
 function setCSSVariable(name, value, autofillPrefix = true){
-    if(autofillPrefix) DOCUMENT_ROOT.style.setProperty(`--${name}`, value)
-    else DOCUMENT_ROOT.style.setProperty(name, value)
+    if(autofillPrefix) name = `--${name}`
+    DOCUMENT_ROOT.style.setProperty(name, value)
+    data.theme.currentTheme[name] = value
 }
 
 function makeCSSVariableArray() {
@@ -37,13 +44,22 @@ function makeThemeVariableText(name){
 }
 
 function makeThemeVariableBorderColor(color){
+    //TODO: Add a limit instead of making this exact so e.g. very dark gray on black still gets a border.
     if(color === getCSSVariable('main-background-color')) return getCSSVariable('generic-gray')
     return color
 }
 
-function updateThemeButton(element, color){
-    element.style.backgroundColor = color
-    element.style.borderColor = makeThemeVariableBorderColor(color)
+function updateThemeButton(name, color, element = null){
+    if(name.includes('generic')) return
+
+    if(element !== null){
+        element.style.backgroundColor = color
+        element.style.borderColor = makeThemeVariableBorderColor(color)
+    }
+    else{
+        DOM(`themeButton${name}`).style.backgroundColor = color
+        DOM(`themeButton${name}`).style.borderColor = makeThemeVariableBorderColor(color)
+    }
 }
 
 function updateDotPosition(e) {
@@ -61,9 +77,9 @@ function updateDotPosition(e) {
     if (saturation === 0) lightness = 100 - (y / rect.height) * 100
     else lightness = 50 - (y / rect.height) * 50
 
-    const selectedColor = `hsl(${themeGlobals.currentHue}, ${saturation}%, ${lightness}%)`
-    setCSSVariable(themeGlobals.currentThemeModification, selectedColor, false)
-    updateThemeButton(document.getElementById(`themeButton${themeGlobals.currentThemeModification}`), selectedColor)
+    const normalizedColor = hslToHex(themeGlobals.currentHue, saturation, lightness)
+    setCSSVariable(themeGlobals.currentThemeModification, normalizedColor, false)
+    updateThemeButton(themeGlobals.currentThemeModification, normalizedColor)
 }
 
 function updateHuePosition(){
@@ -110,8 +126,8 @@ function hideColorPicker(){
 
 function initThemeHTML(){
     const container = DOM('cssVariablesContainer')
-    const keys = Object.keys(makeCSSVariableArray())
-    const values = Object.values(makeCSSVariableArray())
+    const keys = getThemeSetting(0) ? Object.keys(data.theme.currentTheme) : Object.keys(makeCSSVariableArray())
+    const values = getThemeSetting(0) ? Object.values(data.theme.currentTheme) : Object.values(makeCSSVariableArray())
 
     for (let i = 0; i < keys.length; i++) {
         const name = keys[i]
@@ -131,7 +147,7 @@ function initThemeHTML(){
         let color = document.createElement('button')
         color.className = 'themeButton'
         color.id = `themeButton${name}`
-        updateThemeButton(color, value)
+        updateThemeButton(name, value, color)
         color.addEventListener('click', () => showColorPicker(event, name))
         elementRow.appendChild(color)
 
@@ -148,5 +164,112 @@ function initThemeHTML(){
     })
     document.addEventListener('mouseup', () => themeGlobals.isDraggingColorPicker = false)
     hueSlider.addEventListener('input', () => updateHuePosition())
+
+    initThemeControlHTML()
+}
+
+let getThemeSetting = (i) => data.theme.settings[i]
+
+function displayThemeSetting(i, directlySet = true){
+    let text = themeSettings[i].desc
+    const color = getThemeSetting(i) ? '#2da000' : '#ce0b0b'
+    text = `${text} <span style="color: ${color}">[${formatBool(getThemeSetting(i))}]</span>`
+    if(directlySet) DOM(`themeSetting${i}`).innerHTML = text
+    else return text
+}
+
+function toggleThemeSetting(i){
+    data.theme.settings[i] = !data.theme.settings[i]
+    displayThemeSetting(i)
+}
+
+function makeSavedThemeText(i){
+    const color = data.theme.savedThemes[i] !== 0 ? '#5faf40' : '#c44444'
+    const state = data.theme.savedThemes[i] !== 0
+        ? 'Used! Click here to load this Theme!'
+        : 'Empty! Click here to save your Theme for later!'
+    return `Theme Slot ${i}: <span style="color: ${color}">${state}</span>`
+}
+
+function useThemeSlot(i){
+    // Zero is a stand-in for null in this case as the save unpacking can't handle null very well
+    if(data.theme.savedThemes[i] === 0){
+        data.theme.savedThemes[i] = data.theme.currentTheme
+    }
+    else {
+        const keys = Object.keys(data.theme.savedThemes[i])
+        const values = Object.values(data.theme.savedThemes[i])
+        for (let j = 0; j < keys.length; j++) {
+            setCSSVariable(keys[j], values[j], false)
+            updateThemeButton(keys[j], values[j])
+        }
+    }
+
+    DOM(`savedTheme${i}`).innerHTML = makeSavedThemeText(i)
+}
+
+function resetThemeSlot(i){
+    data.theme.savedThemes[i] = 0
+    DOM(`savedTheme${i}`).innerHTML = makeSavedThemeText(i)
+}
+
+function loadTheme(){
+    if(!getThemeSetting(0)) return
+
+    const keys = Object.keys(data.theme.currentTheme)
+    const values = Object.values(data.theme.currentTheme)
+    for (let i = 0; i < keys.length; i++) {
+        setCSSVariable(keys[i], values[i], false)
+    }
+}
+
+function resetTheme(){
+    data.theme.currentTheme = data.theme.defaultTheme
+    const keys = Object.keys(data.theme.currentTheme)
+    const values = Object.values(data.theme.currentTheme)
+    for (let i = 0; i < keys.length; i++) {
+        setCSSVariable(keys[i], values[i], false)
+        updateThemeButton(keys[i], values[i])
+    }
+}
+
+function initThemeControlHTML(){
+    const container = DOM('themeControlContainer')
+    for (let i = 0; i < themeSettings.length; i++) {
+        let setting = document.createElement('button')
+        setting.className = 'setting'
+        setting.id = `themeSetting${i}`
+        setting.innerHTML = displayThemeSetting(i, false)
+        setting.addEventListener('click', () => toggleThemeSetting(i))
+
+        container.appendChild(setting)
+    }
+    for (let i = 0; i < data.theme.savedThemes.length; i++) {
+        let savedWrapper = document.createElement('div')
+        savedWrapper.className = 'savedThemeWrapper'
+        savedWrapper.id = `savedThemeWrapper${i}`
+
+        let saved = document.createElement('button')
+        saved.className = 'savedTheme'
+        saved.id = `savedTheme${i}`
+        saved.innerHTML = makeSavedThemeText(i)
+        saved.addEventListener('click', () => useThemeSlot(i))
+
+        let savedReset = document.createElement('button')
+        savedReset.className = 'savedThemeReset'
+        savedReset.id = `savedThemeReset${i}`
+        savedReset.innerHTML = 'Reset'
+        savedReset.addEventListener('click', () => resetThemeSlot(i))
+
+        savedWrapper.appendChild(saved)
+        savedWrapper.appendChild(savedReset)
+        container.appendChild(savedWrapper)
+    }
+
+    let reset = document.createElement('button')
+    reset.className = 'savedTheme'
+    reset.innerText = 'Reset your current Theme to default'
+    reset.addEventListener('click', () => resetTheme())
+    container.appendChild(reset)
 }
 
