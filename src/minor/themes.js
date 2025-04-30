@@ -1,13 +1,6 @@
 const DOCUMENT_ROOT = document.documentElement
 const ROOT_STYLES = getComputedStyle(DOCUMENT_ROOT)
 
-// NOTE: No DOM() because we do not want to use cached values here.
-const colorPicker = document.getElementById('colorPicker')
-const colorGradientBox = document.getElementById('colorGradientBox')
-const colorSelectorDot = document.getElementById('colorSelectorDot')
-const hueSlider = document.getElementById('hueSlider')
-const colorInput = document.getElementById('colorInput')
-
 const themeGlobals = {
     isDraggingColorPicker: false,
     currentThemeModification: 'null',
@@ -65,6 +58,10 @@ function updateThemeButton(name, color, element = null){
 }
 
 function updateDotPosition(e) {
+    const colorGradientBox = document.getElementById('colorGradientBox')
+    const colorSelectorDot = document.getElementById('colorSelectorDot')
+    const colorInput = document.getElementById('colorInput')
+
     const rect = colorGradientBox.getBoundingClientRect()
     let x = Math.max(0, Math.min(e.clientX - rect.left, rect.width))
     let y = Math.max(0, Math.min(e.clientY - rect.top, rect.height))
@@ -86,6 +83,9 @@ function updateDotPosition(e) {
 }
 
 function setDotFromHSL(h, s, l) {
+    const colorGradientBox = document.getElementById('colorGradientBox')
+    const colorSelectorDot = document.getElementById('colorSelectorDot')
+
     const rect = colorGradientBox.getBoundingClientRect();
     const x = (s / 100) * rect.width;
     const y = (1 - l / 100) * rect.height;
@@ -95,6 +95,10 @@ function setDotFromHSL(h, s, l) {
 }
 
 function updateHuePosition(){
+    const colorGradientBox = document.getElementById('colorGradientBox')
+    const colorSelectorDot = document.getElementById('colorSelectorDot')
+    const hueSlider = document.getElementById('hueSlider')
+
     themeGlobals.currentHue = hueSlider.value
     updateGradient()
 
@@ -108,6 +112,8 @@ function updateHuePosition(){
 
 function updatePickerFromInput(input) {
     if(input[0] !== '#') return;
+
+    const hueSlider = document.getElementById('hueSlider')
     try {
         const hsl = hexToHSL(input);
         themeGlobals.currentHue = hsl.h
@@ -123,6 +129,7 @@ function updatePickerFromInput(input) {
 }
 
 function updateGradient() {
+    const colorGradientBox = document.getElementById('colorGradientBox')
     const color = `hsl(${themeGlobals.currentHue}, 100%, 50%)`
 
     colorGradientBox.style.background = `
@@ -138,7 +145,10 @@ function updateGradient() {
 }
 
 function showColorPicker(event, name){
+    const colorPicker = document.getElementById('colorPicker')
     const scrollOffsets = getScrollOffsets(document.getElementById("cssVariablesContainer"))
+    const hueSlider = document.getElementById('hueSlider')
+    const colorInput = document.getElementById('colorInput')
 
     colorPicker.style.display = 'block'
     colorPicker.style.left = `${event.clientX + scrollOffsets.x}px`
@@ -155,11 +165,19 @@ function showColorPicker(event, name){
 }
 
 function hideColorPicker(){
+    const colorPicker = document.getElementById('colorPicker')
     if(!themeGlobals.isDraggingColorPicker) colorPicker.style.display = 'none'
+}
+
+function initPickerDragging(e){
+    themeGlobals.isDraggingColorPicker = true
+    updateDotPosition(e)
 }
 
 function initThemeHTML(){
     const container = DOM('cssVariablesContainer')
+    const colorInput = document.getElementById('colorInput')
+
     const keys = getThemeSetting(0) ? Object.keys(data.theme.currentTheme) : Object.keys(makeCSSVariableArray())
     const values = getThemeSetting(0) ? Object.values(data.theme.currentTheme) : Object.values(makeCSSVariableArray())
 
@@ -188,13 +206,6 @@ function initThemeHTML(){
         container.appendChild(elementRow)
     }
 
-    colorPicker.addEventListener('mouseleave', () => hideColorPicker())
-    colorGradientBox.addEventListener('mousedown', (e) => {
-        themeGlobals.isDraggingColorPicker = true
-        updateDotPosition(e)
-    })
-    colorInput.addEventListener('change', (e) => updatePickerFromInput(e.target.value))
-    hueSlider.addEventListener('input', () => updateHuePosition())
     document.addEventListener('mousemove', (e) => {
         if (themeGlobals.isDraggingColorPicker) updateDotPosition(e)
     })
