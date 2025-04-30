@@ -79,6 +79,21 @@
     cursor: pointer;
 }
 
+#colorInputContainer {
+    display: flex;
+    margin-top: 15px;
+    align-items: center;
+}
+
+#colorInput {
+    border: 2px solid gray;
+    border-radius: 4px;
+    font-family: DosisNormal, serif;
+    width: 100%;
+    background: black;
+    color: cornsilk;
+}
+
 #themeReset{
     width: 15rem;
     height: 3rem;

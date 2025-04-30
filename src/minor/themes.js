@@ -1,10 +1,12 @@
 const DOCUMENT_ROOT = document.documentElement
 const ROOT_STYLES = getComputedStyle(DOCUMENT_ROOT)
 
+// NOTE: No DOM() because we do not want to use cached values here.
 const colorPicker = document.getElementById('colorPicker')
 const colorGradientBox = document.getElementById('colorGradientBox')
 const colorSelectorDot = document.getElementById('colorSelectorDot')
 const hueSlider = document.getElementById('hueSlider')
+const colorInput = document.getElementById('colorInput')
 
 const themeGlobals = {
     isDraggingColorPicker: false,
@@ -14,7 +16,7 @@ const themeGlobals = {
 
 const themeSettings = [
     {
-        desc: 'Persist Current Theme on Refresh',
+        desc: 'Persist Current Theme on Refresh'
     }
 ]
 
@@ -78,8 +80,18 @@ function updateDotPosition(e) {
     else lightness = 50 - (y / rect.height) * 50
 
     const normalizedColor = hslToHex(themeGlobals.currentHue, saturation, lightness)
+    colorInput.value = normalizedColor
     setCSSVariable(themeGlobals.currentThemeModification, normalizedColor, false)
     updateThemeButton(themeGlobals.currentThemeModification, normalizedColor)
+}
+
+function setDotFromHSL(h, s, l) {
+    const rect = colorGradientBox.getBoundingClientRect();
+    const x = (s / 100) * rect.width;
+    const y = (1 - l / 100) * rect.height;
+
+    colorSelectorDot.style.left = `${x}px`;
+    colorSelectorDot.style.top = `${y}px`;
 }
 
 function updateHuePosition(){
@@ -92,6 +104,22 @@ function updateHuePosition(){
         clientY: parseFloat(colorSelectorDot.style.top) + colorGradientBox.getBoundingClientRect().top
     }
     updateDotPosition(fakeEvent)
+}
+
+function updatePickerFromInput(input) {
+    if(input[0] !== '#') return;
+    try {
+        const hsl = hexToHSL(input);
+        themeGlobals.currentHue = hsl.h
+        hueSlider.value = hsl.h
+        setDotFromHSL(hsl.h, hsl.s, hsl.l)
+        updateGradient()
+
+        setCSSVariable(themeGlobals.currentThemeModification, input, false)
+        updateThemeButton(themeGlobals.currentThemeModification, input)
+    } catch (e) {
+        console.warn(`Invalid color in picker: ${input}, expected hex format.`);
+    }
 }
 
 function updateGradient() {
@@ -116,7 +144,13 @@ function showColorPicker(event, name){
     colorPicker.style.left = `${event.clientX + scrollOffsets.x}px`
     colorPicker.style.top = `${event.clientY + scrollOffsets.y}px`
 
+    colorInput.value = getCSSVariable(name, false)
     themeGlobals.currentThemeModification = name
+
+    const hsl = hexToHSL(getCSSVariable(name, false))
+    themeGlobals.currentHue = hsl.h
+    hueSlider.value = hsl.h
+    setDotFromHSL(hsl.h, hsl.s, hsl.l)
     updateGradient()
 }
 
@@ -159,11 +193,20 @@ function initThemeHTML(){
         themeGlobals.isDraggingColorPicker = true
         updateDotPosition(e)
     })
+    colorInput.addEventListener('change', (e) => updatePickerFromInput(e.target.value))
+    hueSlider.addEventListener('input', () => updateHuePosition())
     document.addEventListener('mousemove', (e) => {
         if (themeGlobals.isDraggingColorPicker) updateDotPosition(e)
     })
     document.addEventListener('mouseup', () => themeGlobals.isDraggingColorPicker = false)
-    hueSlider.addEventListener('input', () => updateHuePosition())
+
+    let colorInputTimeout
+    colorInput.addEventListener('input', (e) => {
+        clearTimeout(colorInputTimeout)
+        colorInputTimeout = setTimeout(() => {
+            updatePickerFromInput(e.target.value)
+        }, 300)
+    })
 
     initThemeControlHTML()
 }
