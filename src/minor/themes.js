@@ -151,8 +151,18 @@ function showColorPicker(event, name){
     const colorInput = document.getElementById('colorInput')
 
     colorPicker.style.display = 'block'
-    colorPicker.style.left = `${event.clientX + scrollOffsets.x}px`
-    colorPicker.style.top = `${event.clientY + scrollOffsets.y}px`
+    const viewportWidth = Math.max(DOCUMENT_ROOT.clientWidth, window.innerWidth || 0)
+    const viewportHeight = Math.max(DOCUMENT_ROOT.clientHeight, window.innerHeight || 0)
+    const pickerRect = colorPicker.getBoundingClientRect()
+
+    let x = event.clientX
+    let y = event.clientY
+
+    if (x + pickerRect.width > viewportWidth) x = viewportWidth - pickerRect.width - 10
+    if (y + pickerRect.height > viewportHeight) y = viewportHeight - pickerRect.height - 10
+
+    colorPicker.style.left = `${x + scrollOffsets.x}px`
+    colorPicker.style.top = `${y + scrollOffsets.y}px`
 
     colorInput.value = getCSSVariable(name, false)
     themeGlobals.currentThemeModification = name
