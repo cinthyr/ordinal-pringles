@@ -278,9 +278,8 @@ function loadTheme(){
 }
 
 function resetTheme(){
-    data.theme.currentTheme = data.theme.defaultTheme
-    const keys = Object.keys(data.theme.currentTheme)
-    const values = Object.values(data.theme.currentTheme)
+    const keys = Object.keys(data.theme.defaultTheme)
+    const values = Object.values(data.theme.defaultTheme)
     for (let i = 0; i < keys.length; i++) {
         setCSSVariable(keys[i], values[i], false)
         updateThemeButton(keys[i], values[i])
