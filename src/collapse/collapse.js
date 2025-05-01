@@ -1,22 +1,21 @@
 function updateCollapseHeaderHTML(){
     if(getSubtab('collapse') === 'cUpgrades' && hasSluggishMilestone(2)){
-        DOM(`cardinalsText`).innerHTML = `You have ${format(data.collapse.cardinals)} Cardinals <span style="color: #9f9fcce1">and ${format(data.darkness.negativeCharge)} Negative Charge</span><br><span style="font-size: 0.8rem; color: #565656">Your best Collapse yielded <span style="color: #20da45">${format(data.collapse.bestCardinalsGained)}</span> Cardinals</span>`
+        DOM(`cardinalsText`).innerHTML = `You have ${format(data.collapse.cardinals)} Cardinals <span style="color: ${getCSSVariable('collapse-text-negative-charge-color')}">and ${format(data.darkness.negativeCharge)} Negative Charge</span><br><span style="font-size: 0.8rem; color: ${getCSSVariable('collapse-text-best-cardinals-color')}">Your best Collapse yielded ${format(data.collapse.bestCardinalsGained)} Cardinals</span>`
     }
     else if(getSubtab('collapse') === 'darkness'){
         const negativeChargeType = hasHypercharge(2) ? 'multiplying' : 'dividing'
-        let text = `You have ${format(data.collapse.cardinals)} Cardinals<span style="color: #9f9fcce1">, ${format(data.chal.decrementy)} Decrementy, and ${format(data.darkness.negativeCharge)} Negative Charge [+${format(negativeChargeGain())}/s]</span><br><span style="font-size: 0.9rem; color: rgba(143,143,151,0.88)">Your Negative Charge is ${negativeChargeType} Incrementy gain by ${format(negativeChargeEffect(false))}`
+        let text = `You have ${format(data.collapse.cardinals)} Cardinals<span style="color: ${getCSSVariable('collapse-text-negative-charge-color')}">, ${format(data.chal.decrementy)} Decrementy, and ${format(data.darkness.negativeCharge)} Negative Charge [+${format(negativeChargeGain())}/s]</span><br><span style="font-size: 0.9rem; color: ${getCSSVariable('negative-charge-text-color')}">Your Negative Charge is ${negativeChargeType} Incrementy gain by ${format(negativeChargeEffect(false))}`
         text += hasHypercharge(2) ? '</span>' : ` and Incrementy\'s effect by ${format(negativeChargeEffect(true))}</span>`
         DOM(`cardinalsText`).innerHTML = text
     }
     else if(getSubtab('collapse') === 'hyper'){
-        // <br><span style="font-size: 0.9rem; color: #8a8a8a">You have 0 Hypercharges, <span style="color: #da2020">doing bad [effect]</span></span
-        DOM('cardinalsText').innerHTML = `<span style="color: goldenrod">You have ${formatWhole(data.incrementy.charge)} Charge</span>${data.obliterate.times > 0 ? `<span style="color: #b87dd9">, ${data.stability.energy[0]} Stable Energy, and ${data.stability.energy[2]} Unbounded Energy</span>` : ''}<br><span style="font-size: 0.9rem; color: #8a8a8a">You have ${getStableHypercharges()} Stable Hypercharges, <span style="color: #20da45">raising Incrementy gain to the ${format(getStableHyperchargeEffect())}</span></span>`
+        DOM('cardinalsText').innerHTML = `<span style="color: ${getCSSVariable('hypercharge-charge-text-color')}">You have ${formatWhole(data.incrementy.charge)} Charge</span>${data.obliterate.times > 0 ? `<span style="color: ${getCSSVariable('hypercharge-energy-text-color')}">, ${data.stability.energy[0]} Stable Energy, and ${data.stability.energy[2]} Unbounded Energy</span>` : ''}<br><span style="font-size: 0.9rem; color: ${getCSSVariable('normal-hypercharge-text-color')}">You have ${getStableHypercharges()} Stable Hypercharges, <span style="color: ${getCSSVariable('stable-hypercharge-text-color')}">raising Incrementy gain to the ${format(getStableHyperchargeEffect())}</span></span>`
     }
     else if(getSubtab('collapse') === 'baseless'){
-        DOM(`cardinalsText`).innerHTML = `<span style="color: #aa6000; font-size: 1rem;">You have <span style="color: #ff4400">${format(data.baseless.alephNull)} ℵ<sub>0</sub></span>${makeAlephNullEffectText()}<span style="font-size: 0.9rem; font-family: DosisLight, sans-serif">${makeRealmEnhancementText()}</span></span>`
+        DOM(`cardinalsText`).innerHTML = `<span style="color: ${getCSSVariable('aleph-null-text-primary-color')}; font-size: 1rem;">You have <span style="color: ${getCSSVariable('aleph-null-text-amount-color')}">${format(data.baseless.alephNull)} ℵ<sub>0</sub></span>${makeAlephNullEffectText()}<span style="font-size: 0.9rem; font-family: DosisLight, sans-serif">${makeRealmEnhancementText()}</span></span>`
     }
     else{
-        DOM(`cardinalsText`).innerHTML = `You have ${format(data.collapse.cardinals)} Cardinals<br><span style="font-size: 0.8rem; color: #565656">Your best Collapse yielded <span style="color: #20da45">${format(data.collapse.bestCardinalsGained)}</span> Cardinals</span>`
+        DOM(`cardinalsText`).innerHTML = `You have ${format(data.collapse.cardinals)} Cardinals<br><span style="font-size: 0.8rem; color: ${getCSSVariable('collapse-text-best-cardinals-color')}">Your best Collapse yielded ${format(data.collapse.bestCardinalsGained)} Cardinals</span>`
     }
 }
 function updateCollapseHTML(){
@@ -28,9 +27,9 @@ function updateCollapseHTML(){
     if(hasCUP(7)) DOM(`cup7`).innerText = `${cupData[7].text}\n\nCurrently: ${format(cupData[7].effect())}%`
 
     DOM(getAdaptiveButton("collapseButton")).style.display = data.boost.times > 33 || data.collapse.times > 0 || data.obliterate.times > 0 ? 'block' : 'none'
-    DOM(getAdaptiveButton("collapseButton")).style.color = data.ord.isPsi && data.ord.ordinal.gte(BHO_VALUE) || data.boost.times > 33 ? '#b3ff80' : '#20da45'
+    DOM(getAdaptiveButton("collapseButton")).style.color = data.ord.isPsi && data.ord.ordinal.gte(BHO_VALUE) || data.boost.times > 33 ? getCSSVariable('collapse-button-available-text-color') : getCSSVariable('collapse-button-default-text-color')
 
-    if(data.baseless.baseless) DOM(`baseless`).children[2].innerHTML = `<br><br>You will gain <span style="color: darkred">${format(getAlephNullGain())} ℵ<sub>0</sub></span> if you exit now<br><span style="font-size: 0.9rem">Your <span style="color: darkred">ℵ<sub>0</sub></span> gain multipier is currently ${format(getBaselessMult(data.baseless.mode)*dynamicShiftMultipliers[0]())}</span>`
+    if(data.baseless.baseless) DOM(`baseless`).children[2].innerHTML = `<br><br>You will gain <span style="color: ${getCSSVariable('baseless-realm-gain-text-color')}">${format(getAlephNullGain())} ℵ<sub>0</sub></span> if you exit now<br><span style="font-size: 0.9rem">Your <span style="color: ${getCSSVariable('baseless-realm-gain-text-color')}">ℵ<sub>0</sub></span> gain multipier is currently ${format(getBaselessMult(data.baseless.mode)*dynamicShiftMultipliers[0]())}</span>`
 
     updateTotalAlephHTML()
     updateDarknessHTML()
@@ -57,7 +56,7 @@ function initAlephs(){
         let el = document.createElement('t')
         el.className = 'alephText'
         el.id = `aleph${i}`
-        el.innerHTML = `You have <span style='color:#20da45'><b>${format(getAlephAmount(i))} ℵ<sub>${i+1}</sub></b></span>, ${alephData[i].text} <span style='color: #20da45'><b>${format(getAlephEffect(i))}x</b></span>`
+        el.innerHTML = `You have <span style='color: ${getCSSVariable('aleph-text-amount-color')}'><b>${format(getAlephAmount(i))} ℵ<sub>${i+1}</sub></b></span>, ${alephData[i].text} <span style='color: ${getCSSVariable('aleph-text-effect-color')}'><b>${format(getAlephEffect(i))}x</b></span>`
         container.append(el)
     }
 }
@@ -117,7 +116,7 @@ function initSluggish(){
 }
 
 function updateAlephHTML(i){
-    DOM(`aleph${i}`).innerHTML = `You have <span style='color: #20da45'><b>${format(getAlephAmount(i))} ℵ<sub>${i+1}</sub></b></span>, ${alephData[i].text} <span style='color: #20da45'><b>${format(getAlephEffect(i))}x</b></span>`
+    DOM(`aleph${i}`).innerHTML = `You have <span style='color: ${getCSSVariable('aleph-text-amount-color')}'><b>${format(getAlephAmount(i))} ℵ<sub>${i+1}</sub></b></span>, ${alephData[i].text} <span style='color: ${getCSSVariable('aleph-text-effect-color')}'><b>${format(getAlephEffect(i))}x</b></span>`
 }
 function updateAllAlephHTML(){
     for (let i = 0; i < data.collapse.alephs.length; i++) {
@@ -125,17 +124,17 @@ function updateAllAlephHTML(){
     }
 }
 function updateTotalAlephHTML(){
-    DOM(`alephTotal`).innerHTML = `You have <span style='color: #20da45'><b>${format(getTotalAlephs())} Total ℵ</b></span>, multiplying Cardinal gain by <span style='color: #20da45'><b>${format(alephTotalEffect())}x</b></span>`
+    DOM(`alephTotal`).innerHTML = `You have <span style='color: ${getCSSVariable('aleph-total-text-amount-color')}'><b>${format(getTotalAlephs())} Total ℵ</b></span>, multiplying Cardinal gain by <span style='color: ${getCSSVariable('aleph-total-text-effect-color')}'><b>${format(alephTotalEffect())}x</b></span>`
     DOM(`omega2Text`).innerHTML = ordinalDisplay("", BHO_VALUE, 0, 3, data.ord.trim, true, true)
 }
 function updateUnlockHTML(mode, i){
     switch (mode) {
         case 0:
-            DOM(`cup${i}`).style.background = hasCUP(i) ? "#0e3000" : "black"
+            DOM(`cup${i}`).className = hasCUP(i) ? 'boughtCUP' : 'cup'
             if(i === 5) DOM(`bp5Container`).style.display = hasCUP(5) ? 'block' : 'none'
             break;
         case 1:
-            DOM(`sluggish${i}`).style.background = hasSluggishMilestone(i) ? "#0e3000" : "black"
+            DOM(`sluggish${i}`).className = hasSluggishMilestone(i) ? 'completeSluggish' : 'sluggish'
             if(i === 1) DOM('darkTab').innerText = hasSluggishMilestone(2) ? 'Darkness' : '???'
             break;
         default:
@@ -346,7 +345,7 @@ function collapseReset(){
     updateIncrementyHTML()
     if(!hasSluggishMilestone(3)) {
         for (let i = 0; i < data.incrementy.hasIUP.length; i++) {
-            DOM(`iup${i}`).style.color = '#8080FF'
+            DOM(`iup${i}`).className = 'iup'
         }
     }
 

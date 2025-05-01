@@ -112,7 +112,7 @@ const aoMilestoneData = [
         req: 1000,
         eff: () => hasAOMilestone(3) ? purificationEffect(3) : 1
     },{
-        desc: "Boosters boost Cardinal Gain, unlock a new ℵ<sub>0</sub> Rebuyable, unlock a new ℵ<sub>0</sub> effect, and unlock<span style='color: #9d58c9'> Obliteration</span>",
+        desc: `Boosters boost Cardinal Gain, unlock a new ℵ<sub>0</sub> Rebuyable, unlock a new ℵ<sub>0</sub> effect, and unlock<span style=color: ${getCSSVariable('obliteration-unlock-text-color')}> Obliteration</span>`,
         req: 1700,
         eff: () => hasAOMilestone(4) ? data.boost.amt : 1
     },
@@ -166,7 +166,7 @@ function initAOMilestones(){
             let el = document.createElement('button')
             el.className = 'aoMilestone'
             el.id = `aoM${id}`
-            el.innerHTML = `<span style="color: #c2052c">${aoMilestoneData[id].desc}</span><br>Requires: ${aoMilestoneData[id].req} ℶ<sub>&omega;</sub>`
+            el.innerHTML = `<span style="color: ${getCSSVariable('beth-omega-milestone-description-text-color')}">${aoMilestoneData[id].desc}</span><br>Requires: ${aoMilestoneData[id].req} ℶ<sub>&omega;</sub>`
             //el.addEventListener("click", ()=>enterPurification(i))
             row.append(el)
         }
@@ -177,13 +177,13 @@ function initAOMilestones(){
 
 function updatePurificationTabHTML(){
     if(alephOmegaCap() > data.omega.bestRemnants) data.omega.bestRemnants = alephOmegaCap()
-    DOM(`alephOmega`).innerHTML = `<span style="font-size: 1.1rem">You have <span style="color: #ff4848">${format(data.omega.alephOmega)} ℵ<sub>&omega;</sub></span>, multiplying <span style="color: #ff4848">AutoBuyer Speed by ${format(getAOEffect(0))}x</span> and <span style="color: #ff4848">ℵ<sub>0</sub> gain by ${format(getAOEffect(1))}x</span></span><br>You have <span style="color: #ff4848">${format(alephOmegaCap())} ℶ<sub>&omega;</sub></span>, producing <span style="color: #ff4848">${format(aoGain())} ℵ<sub>&omega;</sub>/s</span> until ℵ<sub>&omega;</sub> reaches ℶ<sub>&omega;</sub>`
-    if(inAnyPurification()) DOM(`purification${data.omega.whichPurification}`).innerHTML = `<span style="color: #ce0b0b">Purification of ${purificationData[data.omega.whichPurification].name}</span><br><span style="color: #ce390b">You will gain ${formatWhole(pureBoostGain())} more Boosts if you exit now (Highest Boost: ${data.omega.bestFBInPurification[data.omega.whichPurification]})</span><br><span style="color: darkred">${purificationData[data.omega.whichPurification].desc}</brspan><br><span style="color: #ce460b">${purificationData[data.omega.whichPurification].boostDesc} ${format(purificationData[data.omega.whichPurification].eff())}x</span>\``
+    DOM(`alephOmega`).innerHTML = `<span style="font-size: 1.1rem">You have <span style="color: ${getCSSVariable('aleph-omega-amount-text-color')}">${format(data.omega.alephOmega)} ℵ<sub>&omega;</sub></span>, multiplying <span style="color: ${getCSSVariable('aleph-omega-effect-text-color')}">AutoBuyer Speed by ${format(getAOEffect(0))}x</span> and <span style="color: ${getCSSVariable('aleph-omega-effect-text-color')}">ℵ<sub>0</sub> gain by ${format(getAOEffect(1))}x</span></span><br>You have <span style="color: ${getCSSVariable('aleph-omega-amount-text-color')}">${format(alephOmegaCap())} ℶ<sub>&omega;</sub></span>, producing <span style="color: ${getCSSVariable('aleph-omega-effect-text-color')}">${format(aoGain())} ℵ<sub>&omega;</sub>/s</span> until ℵ<sub>&omega;</sub> reaches ℶ<sub>&omega;</sub>`
+    if(inAnyPurification()) DOM(`purification${data.omega.whichPurification}`).innerHTML = `<span style="color: ${getCSSVariable('purification-name-text-color')}">Purification of ${purificationData[data.omega.whichPurification].name}</span><br><span style="color: ${getCSSVariable('purification-boost-text-color')}">You will gain ${formatWhole(pureBoostGain())} more Boosts if you exit now (Highest Boost: ${data.omega.bestFBInPurification[data.omega.whichPurification]})</span><br><span style="color: ${getCSSVariable('purification-description-text-color')}">${purificationData[data.omega.whichPurification].desc}</brspan><br><span style="color: ${getCSSVariable('purification-effect-text-color')}">${purificationData[data.omega.whichPurification].boostDesc} ${format(purificationData[data.omega.whichPurification].eff())}x</span>\``
     updateAllAORHTML()
 }
 function updatePurificationHTML(i){
-    DOM(`purification${i}`).innerHTML = `<span style="color: #ce0b0b">Purification of ${purificationData[i].name}</span><br><span style="color: #ce390b">Highest ${purificationData[i].alt} Boost: <b>${data.omega.bestFBInPurification[i]}</b></span><br><span style="color: darkred">${purificationData[i].desc}</brspan><br><span style="color: #ce460b">${purificationData[i].boostDesc} ${format(purificationData[i].eff())}x</span>`
-    DOM(`purification${i}`).style.backgroundColor = data.omega.purificationIsActive[i] ? `#120303` : `black`
+    DOM(`purification${i}`).innerHTML = `<span style="color: ${getCSSVariable('purification-name-text-color')}">Purification of ${purificationData[i].name}</span><br><span style="color: ${getCSSVariable('purification-boost-text-color')}">Highest ${purificationData[i].alt} Boost: <b>${data.omega.bestFBInPurification[i]}</b></span><br><span style="color: ${getCSSVariable('purification-description-text-color')}">${purificationData[i].desc}</brspan><br><span style="color: ${getCSSVariable('purification-effect-text-color')}">${purificationData[i].boostDesc} ${format(purificationData[i].eff())}x</span>`
+    DOM(`purification${i}`).className = data.omega.purificationIsActive[i] ? `activePurification` : `purification`
 }
 function updatePossiblePurificationHTML(){
     if(data.omega.whichPurification === 0) updateAllDUPHTML()
@@ -191,7 +191,7 @@ function updatePossiblePurificationHTML(){
     if(data.omega.whichPurification === 2) updateAllBUPHTML()
 }
 function updateAORHTML(i){
-    DOM(`aoR${i}`).innerHTML = `<span style="color: #ce280b">${aoRebuyableData[i].desc} (${formatWhole(getAORLevel(i))})</span><br>Cost: ${format(getAORCost(i))} ℵ<sub>&omega;</sub><br>Currently: ${aoRebuyableData[i].symbol !== 'x' ? aoRebuyableData[i].symbol : ''}${format(getAOREffect(i))}${aoRebuyableData[i].symbol === 'x' ? 'x' : ''} ${aoRebuyableData[i].req() ? '' : `(${formatBool(aoRebuyableData[i].req(), 'AU')})`}`
+    DOM(`aoR${i}`).innerHTML = `<span style="color: ${getCSSVariable('aleph-omega-buyable-description-text-color')}">${aoRebuyableData[i].desc} (${formatWhole(getAORLevel(i))})</span><br>Cost: ${format(getAORCost(i))} ℵ<sub>&omega;</sub><br>Currently: ${aoRebuyableData[i].symbol !== 'x' ? aoRebuyableData[i].symbol : ''}${format(getAOREffect(i))}${aoRebuyableData[i].symbol === 'x' ? 'x' : ''} ${aoRebuyableData[i].req() ? '' : `(${formatBool(aoRebuyableData[i].req(), 'AU')})`}`
 }
 function updateAllAORHTML(){
     for (let i = 0; i < data.omega.aoRebuyables.length; i++) {
@@ -199,7 +199,7 @@ function updateAllAORHTML(){
     }
 }
 function updateAOMilestoneHTML(i){
-    DOM(`aoM${i}`).style.backgroundColor = hasAOMilestone(i) ? `#120303` : `black`
+    DOM(`aoM${i}`).className = hasAOMilestone(i) ? `aoMilestone` : `unlockedAOMilestone`
 }
 function updateAllAOMHTML(){
     for (let i = 0; i < aoMilestoneData.length; i++) {

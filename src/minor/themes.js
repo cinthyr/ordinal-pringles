@@ -277,7 +277,31 @@ function resetThemeSlot(i){
     DOM(`savedTheme${i}`).innerHTML = makeSavedThemeText(i)
 }
 
+function updateThemeDefaults(){
+    // Create a new default theme based on the current values
+    const newDefault = makeCSSVariableArray()
+    const newKeys = Object.keys(newDefault)
+
+    const currentKeys = Object.keys(data.theme.currentTheme)
+    const defaultKeys = Object.keys(data.theme.defaultTheme)
+
+    // If a current theme value is a default, update it to match the new defaults (if necessary)
+    for (let i = 0; i < newKeys.length; i++) {
+        const newValue = newDefault[newKeys[i]]
+        const currentValue = data.theme.currentTheme[currentKeys[i]]
+        const defaultValue = data.theme.defaultTheme[defaultKeys[i]]
+
+        if(newValue === defaultValue) continue;
+        if(currentValue === defaultValue) data.theme.currentTheme[newKeys[i]] = newValue
+    }
+
+    // Ensure default theme remains up to date
+    data.theme.defaultTheme = makeCSSVariableArray()
+}
+
 function loadTheme(){
+    updateThemeDefaults()
+
     if(!getThemeSetting(0)) return
 
     const keys = Object.keys(data.theme.currentTheme)

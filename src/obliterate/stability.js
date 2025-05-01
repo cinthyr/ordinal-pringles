@@ -56,14 +56,14 @@ let stableEnergyData = [
 
 function makeStabilityText(i){
     let previousName = i === 0 ? 'Fractal' : stableEnergyData[i-1].name
-    let text = `<span style="color: #9765b2">${stableEnergyData[i].desc} ${stableEnergyData[i].cost} ${previousName} Energy to gain 1 ${stableEnergyData[i].name} Energy</span><br><br><b style="color: #b87dd9">You currently have ${getStableEnergy(i)}</b>, it is:`
+    let text = `<span style="color: ${getCSSVariable('stable-energy-description-text-color')}">${stableEnergyData[i].desc} ${stableEnergyData[i].cost} ${previousName} Energy to gain 1 ${stableEnergyData[i].name} Energy</span><br><br><b style="color: ${getCSSVariable('stable-energy-amount-text-color')}">You currently have ${getStableEnergy(i)}</b>, it is:`
     for (let j = 0; j < stableEnergyData[i].effects.length; j++) {
         let data =  stableEnergyData[i].effects[j]
         if(data.isAbnormal){
-            text += `<br><span style="color: #a88fcc">${data.desc}</span>`
+            text += `<br><span style="color: ${getCSSVariable('stable-energy-special-effect-text-color')}">${data.desc}</span>`
         }
         else{
-            text += `<br><span style="color: #a27dd9">${data.desc}</span> by <span style="color: #a27dd9">${formatSign(getStableEnergyEffect(i, j), data.sign)}</span>`
+            text += `<br><span style="color: ${getCSSVariable('stable-energy-normal-effect-text-color')}">${data.desc}</span> by <span style="color: ${getCSSVariable('stable-energy-normal-effect-text-color')}">${formatSign(getStableEnergyEffect(i, j), data.sign)}</span>`
         }
     }
     return text

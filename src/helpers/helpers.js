@@ -90,7 +90,9 @@ function customRoot(num, root, minValue = 1){
 }
 
 function updateGwaHTML(){
-    const color = data.gword.enabled ? '#2da000' : '#ce0b0b'
+    const color = data.gword.enabled
+        ? getCSSVariable('setting-on-text-color')
+        : getCSSVariable('setting-off-text-color')
     DOM(`gwaifyToggle`).innerHTML = `<img src='https://cdn.discordapp.com/emojis/853002327362895882.webp?size=24'> Display <span style="color: ${color}">${formatBool(data.gword.enabled)}</span>`
 }
 function gwaToggle() {

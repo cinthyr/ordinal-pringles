@@ -26,7 +26,7 @@ function updateHUPHTML(i){
 
     el.innerHTML = `${hupData[i].text}<br>${ordinalDisplay('', hupData[i].cost, 0, 10, ordinalDisplayTrim(), false)} ${cost}<br>`
     if (data.hierarchies.hasUpgrade[i]) {
-        el.innerHTML += `<span style="color='#424242'"><b>Reached!</b></span>`
+        el.innerHTML += `<b>Reached!</b>`
     }
 }
 
@@ -58,10 +58,10 @@ function initHierarchies(){
             let hup = document.createElement('button')
             hup.className = ' hup'
             hup.id = `hup${total2}`
-            if(n > 0) hup.style.borderTop = '1px solid #631d89'
-            if(n < 4) hup.style.borderBottom = '1px solid #631d89'
+            if(n > 0) hup.style.borderTop = `1px solid ${getCSSVariable('hierarchy-milestone-border-color')}`
+            if(n < 4) hup.style.borderBottom = `1px solid ${getCSSVariable('hierarchy-milestone-border-color')}`
 
-            data.hierarchies.hasUpgrade[total2] ? hup.innerHTML = `${hupData[total2].text}<br>${ordinalDisplay('', hupData[total2].cost, 0, 10/*hierarchyData[i].base()*/, ordinalDisplayTrim(), false)} ${cost}<br><span style="color='#424242'"><b>Reached!</b></span>`
+            data.hierarchies.hasUpgrade[total2] ? hup.innerHTML = `${hupData[total2].text}<br>${ordinalDisplay('', hupData[total2].cost, 0, 10/*hierarchyData[i].base()*/, ordinalDisplayTrim(), false)} ${cost}<br><<b>Reached!</b>`
             : hup.innerHTML = `${hupData[total2].text}<br>${ordinalDisplay('', hupData[total2].cost, 0, 10/*hierarchyData[i].base()*/, ordinalDisplayTrim(), false)} ${cost}`
 
             columns2[i].append(hup)

@@ -213,7 +213,7 @@ function initBUPs(){
     for (let i = 0; i < rows.length; i++) {
         for (let n = 0; n < 5; n++) {
             let bup = document.createElement('button')
-            bup.className = data.boost.isCharged[total] ? 'chargedBUP' : 'bup'
+            bup.className = data.boost.isCharged[total] ? 'chargedBUP' : data.boost.hasBUP[total] ? 'boughtBUP' : 'bup'
             bup.id = `bup${total}`
             bup.innerHTML = `${getBUPDesc(total)}`
 
@@ -226,10 +226,9 @@ function initBUPs(){
         DOM(`bup${i}`).addEventListener('click', ()=>buyBUP(i, bottomRow, true))
         DOM(`bup${i}`).addEventListener('mouseenter', ()=>showNextBUPLevelEffect(i, true))
         DOM(`bup${i}`).addEventListener('mouseleave', ()=>showNextBUPLevelEffect(i, false))
-        DOM(`bup${i}`).style.backgroundColor = data.boost.isCharged[i] ? '#3b3100' : data.boost.hasBUP[i] ? '#002480' : 'black'
     }
     for (let i = 0; i < data.boost.unlocks.length; i++) {
-        DOM(`bu${i}`).style.backgroundColor = data.boost.unlocks[i]?'#002480':'black'
+        DOM(`bu${i}`).className = data.boost.unlocks[i] ? 'boughtBUP' : 'bup'
     }
 
     checkSpecialBUPs()
@@ -244,9 +243,9 @@ function checkSpecialBUPs(){
 
 function updateBoostersHTML(){
     DOM('boosterText').innerHTML = data.boost.unlocks[1] > 0 ?
-        `You have <span style="color: #8080FF; font-family: DosisSemiBold, serif">${format(data.boost.amt)} Boosters</span> (${format(data.boost.total)} total) and <span style="color: goldenrod; font-family: DosisSemiBold, serif">${data.incrementy.charge} Charge</span> (${data.incrementy.totalCharge} total)`
-        : `You have <span style="color: #8080FF; font-family: DosisSemiBold, serif">${format(data.boost.amt)} Boosters</span> (${format(data.boost.total)} total)`
-    DOM('boosterTimesText').innerHTML = `You have <span style="color: #8080FF">Boosted</span> ${data.boost.times} times`
+        `You have <span style="color: ${getCSSVariable('boosters-text-boosters-color')}; font-family: DosisSemiBold, serif">${format(data.boost.amt)} Boosters</span> (${format(data.boost.total)} total) and <span style="color: ${getCSSVariable('boosters-text-charge-color')}; font-family: DosisSemiBold, serif">${data.incrementy.charge} Charge</span> (${data.incrementy.totalCharge} total)`
+        : `You have <span style="color: ${getCSSVariable('boosters-text-boosters-color')}; font-family: DosisSemiBold, serif">${format(data.boost.amt)} Boosters</span> (${format(data.boost.total)} total)`
+    DOM('boosterTimesText').innerHTML = `You have <span style="color: ${getCSSVariable('boosters-text-boost-count-color')}">Boosted</span> ${data.boost.times} times`
     DOM("factorText2").innerText = `Your Challenges are multiplying AutoBuyer speed by a total of ${format(chalEffectTotal())}x`
 
     if(getSubtab('boosters') === 'auto2') updateAllAutomationHTML()
@@ -272,14 +271,14 @@ function updateAllBUPHTML(){
 function showNextBUPLevelEffect(i, showNextLevel) {
     if(data.incrementy.totalCharge === 0 && data.darkness.sacrificedCharge === 0) return
     if(!getEUPEffect(4, 0) && data.boost.isCharged[i]) return
-    DOM(`bup${i}`).style.color = showNextLevel || data.boost.isCharged[i] && data.boost.unlocks[1] ? 'goldenrod' : '#8080FF'
+    DOM(`bup${i}`).style.color = showNextLevel || data.boost.isCharged[i] && data.boost.unlocks[1] ? getCSSVariable('charged-BUP-text-color') : getCSSVariable('unbought-BUP-text-color')
     DOM(`bup${i}`).innerHTML = `${getBUPDesc(i, showNextLevel)}`
 }
 
 function updateBUPInfoText(){
-    let bottomAddon = hasSluggishMilestone(3) ? `Bottom-Row <span style="color: #8080FF">Upgrades</span> are unique and currently cost <span style="color: goldenrod">${getBottomRowChargeCost()} Charge</span> to <span style="color: goldenrod">Supercharge.</span><br>` : ``
-    let superchargeAddon = data.boost.unlocks[1] ? `Purchased <span style="color: #8080FF">Upgrades</span> can be <span style="color: goldenrod">Supercharged</span> for <span style="color: goldenrod">1 Charge!</span><br>` : ``
-    let text = `${superchargeAddon}${bottomAddon}<span style="color: #8080FF">Upgrades</span> must be bought in <span style="color: #8080FF">descending order</span>. Attempting to buy an <span style="color: #8080FF">Upgrade</span> will also attempt to buy all <span style="color: #8080FF">Upgrades</span> above it.`
+    let bottomAddon = hasSluggishMilestone(3) ? `Bottom-Row <span style="color: ${getCSSVariable('BUP-help-text-upgrade-color')}">Upgrades</span> are unique and currently cost <span style="color: ${getCSSVariable('BUP-help-text-charge-color')}">${getBottomRowChargeCost()} Charge</span> to <span style="color: ${getCSSVariable('BUP-help-text-charge-color')}">Supercharge.</span><br>` : ``
+    let superchargeAddon = data.boost.unlocks[1] ? `Purchased <span style="color: ${getCSSVariable('BUP-help-text-upgrade-color')}">Upgrades</span> can be <span style="color: ${getCSSVariable('BUP-help-text-charge-color')}">Supercharged</span> for <span style="color: ${getCSSVariable('BUP-help-text-charge-color')}">1 Charge!</span><br>` : ``
+    let text = `${superchargeAddon}${bottomAddon}<span style="color: ${getCSSVariable('BUP-help-text-upgrade-color')}">Upgrades</span> must be bought in <span style="color: ${getCSSVariable('BUP-help-text-upgrade-color')}">descending order</span>. Attempting to buy an <span style="color: ${getCSSVariable('BUP-help-text-upgrade-color')}">Upgrade</span> will also attempt to buy all <span style="color: ${getCSSVariable('BUP-help-text-upgrade-color')}">Upgrades</span> above it.`
     return DOM('bupBottomText').innerHTML = text
 }
 
@@ -382,7 +381,7 @@ function buyBUP(n, bottomRow, useCharge, isAuto = false){
     data.boost.amt -= getBUPCosts(n)
     data.boost.hasBUP[n] = true
 
-    DOM(`bup${n}`).style.backgroundColor = '#002480'
+    DOM(`bup${n}`).className = 'boughtBUP'
     if(inPurification(2)) updateAllBUPHTML()
 }
 
@@ -392,24 +391,24 @@ function boosterRefund(c=false){
     updateHierarchyPurchaseHTML()
     for (let i = 0; i < data.boost.hasBUP.length; i++) {
         data.boost.hasBUP[i] = false
-        DOM(`bup${i}`).style.backgroundColor = 'black'
+        DOM(`bup${i}`).className = 'bup'
     }
     data.boost.amt = data.boost.total
     c?boosterReset():chalExit()
 }
 
 // TODO: Refactor / Cleanup
+function updateBoosterUnlockState(i, condition){
+    DOM(`bu${i}`).className = condition ? 'boughtBUP' : 'bup'
+    data.boost.unlocks[i] = condition
+}
+
 function boosterUnlock(){
-    if(chalTabUnlocked()){ data.boost.unlocks[0] = true; DOM(`bu0`).style.backgroundColor = '#002480'; }
-    else {DOM(`bu0`).style.backgroundColor = 'black';}
-    if(incrementyTabUnlocked()){ data.boost.unlocks[1] = true; DOM(`bu1`).style.backgroundColor = '#002480';  }
-    else {DOM(`bu1`).style.backgroundColor = 'black';}
-    if(hierarchiesTabUnlocked()){ data.boost.unlocks[2] = true; DOM(`bu2`).style.backgroundColor = '#002480'; }
-    else {DOM(`bu2`).style.backgroundColor = 'black';}
-    if(overflowTabUnlocked()){ data.boost.unlocks[3] = true; DOM(`bu3`).style.backgroundColor = '#002480'; }
-    else {DOM(`bu3`).style.backgroundColor = 'black';}
-    if((data.boost.total >= 12246 && hasSluggishMilestone(3)) || hasPassiveUpgrade(20) || data.boost.unlocks[4]){ data.boost.unlocks[4] = true; DOM(`bu4`).style.backgroundColor = '#002480'; }
-    else {DOM(`bu4`).style.backgroundColor = 'black';}
+    updateBoosterUnlockState(0, chalTabUnlocked())
+    updateBoosterUnlockState(1, incrementyTabUnlocked())
+    updateBoosterUnlockState(2, hierarchiesTabUnlocked())
+    updateBoosterUnlockState(3, overflowTabUnlocked())
+    updateBoosterUnlockState(4, (data.boost.total >= 12246 && hasSluggishMilestone(3)) || hasPassiveUpgrade(20) || data.boost.unlocks[4])
 }
 
 function chalTabUnlocked(){

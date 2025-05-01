@@ -1,6 +1,6 @@
 /*
 
-    ALL CREDIT GOES TO ryanleonels ON DISCORD FOR EVERYTHING BEFORE THE "LEGACY" SECTION
+    ALL CREDIT GOES TO ryanleonels ON DISCORD FOR MOST THING BEFORE THE "LEGACY" SECTION
     Source: https://ordinal-pringles-dark-mode.glitch.me/src/etc/progressBar.js
 
  */

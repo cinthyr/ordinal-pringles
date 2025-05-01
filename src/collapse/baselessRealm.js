@@ -369,7 +369,7 @@ function initRealmBUPs(){
     for (let i = 0; i < rows.length; i++) {
         for (let n = 0; n < 4; n++) {
             let bup = document.createElement('button')
-            bup.className = 'rBup'
+            bup.className = hasBaselessBUP(total) ? 'boughtRBup' : 'rBup'
             bup.id = `rBup${total}`
             bup.innerHTML = `${getRealmBUPDesc(total)}`
 
@@ -379,7 +379,6 @@ function initRealmBUPs(){
     }
     for (let i = 0; i < data.baselessRealm.hasBUP.length; i++) {
         DOM(`rBup${i}`).addEventListener('click', ()=>buyRealmBUP(i))
-        DOM(`rBup${i}`).style.backgroundColor = hasRealmBUP(i) ? '#250505' : 'black'
     }
 
     let unlockCol = DOM(`rBuColumn`)
@@ -392,7 +391,7 @@ function initRealmBUPs(){
     }
 
     for (let i = 0; i < data.boost.unlocks.length; i++) {
-        DOM(`bu${i}`).style.backgroundColor = data.baselessRealm.unlocks[i] ? '#250505' : 'black'
+        DOM(`bu${i}`).className = data.baselessRealm.unlocks[i] ? 'unlockedRBu' : 'rBu'
     }
 }
 function initRealmChallenges(){
@@ -427,12 +426,10 @@ function initRealmIncrementy(){
             let id = j+i*3
             if(id > realmIUPData.length-1) break
             let iup = document.createElement('button')
-            iup.className = 'rIUP'
+            iup.className = isRealmIUPRebuyable(id) ? 'rebuyableRIUP' : hasRealmIUP(id) ? 'boughtRIUP' : 'rIUP'
             iup.id = `rIUP${id}`
             iup.innerText = `${getRealmIUPDesc(id)}`
             iup.addEventListener('click', () => buyRealmIUP(id))
-
-            if(!isRealmIUPRebuyable(id) && hasRealmIUP(id)) iup.style.color = `#9e5324`
 
             row.append(iup)
         }
@@ -480,7 +477,9 @@ function initRealmHierarchies(){
 }
 
 function updateRealmHTML(){
-    DOM(`boostNav`).style.color = isBaseless() ? '#ff8080' : '#8080FF'
+    DOM(`boostNav`).style.color = isBaseless()
+        ? getCSSVariable('realm-navigation-text-color')
+        : getCSSVariable('boosters-navigation-text-color')
 
     updateRealmUnlockHTML()
     for (let i = 0; i < realmChallengeData.length; i++) {
@@ -500,14 +499,14 @@ function updateRealmHTML(){
 }
 
 function updateRealmBoostersHTML() {
-    DOM('rBoosterText').innerHTML = `You have <span style="color: #ff8080; font-family: DosisSemiBold, serif">${(data.baselessRealm.amt)} Baseless Boosters</span> (${(data.baselessRealm.total)} total)`
-    DOM('rBoosterTimesText').innerHTML = `You have <span style="color: #ff8080">Boosted</span> ${data.baselessRealm.times} times`
+    DOM('rBoosterText').innerHTML = `You have <span style="color: ${getCSSVariable('realm-boosters-text-boosters-color')}; font-family: DosisSemiBold, serif">${(data.baselessRealm.amt)} Baseless Boosters</span> (${(data.baselessRealm.total)} total)`
+    DOM('rBoosterTimesText').innerHTML = `You have <span style="color: ${getCSSVariable('realm-boosters-text-boost-count-color')}">Boosted</span> ${data.baselessRealm.times} times`
 
     DOM(getAdaptiveButton('factorBoostButton')).innerHTML = `Perform a Baseless Boost [+${getRealmBoosterGain()}] (B)<br>Requires ${displayRealmBoostReq()}`
     DOM(getAdaptiveButton('factorShiftButton')).innerHTML = `Perform a Baseless Shift (H)<br>Requires &omega;<sup>&omega;</sup>`
 
-    DOM(getAdaptiveButton('factorBoostButton')).style.color = getAlephNullGain() > realmBoostReq() ? '#fff480' : '#ff8080'
-    DOM(getAdaptiveButton('factorShiftButton')).style.color = canDynamicShift() ? '#fff480' : '#d93c3c'
+    DOM(getAdaptiveButton('factorBoostButton')).style.color = getAlephNullGain() > realmBoostReq() ? getCSSVariable('realm-factor-boost-button-available-text-color') : getCSSVariable('realm-factor-boost-button-default-text-color')
+    DOM(getAdaptiveButton('factorShiftButton')).style.color = canDynamicShift() ? getCSSVariable('realm-factor-shift-button-available-text-color') : getCSSVariable('realm-factor-shift-button-default-text-color')
 
     if(getSubtab('realm') === 'realmChal') DOM(`rChallengeEffectText`).innerText = `Your Factors are boosting Aleph Null gain by ${format(getRealmChallengeOverallEffect())}x`
     if(getSubtab('realm') === 'realmIncrementy') updateRealmIncrementyHTML()
@@ -519,7 +518,7 @@ function updateRealmBoostersHTML() {
 
 function updateRealmUnlockHTML(){
     for (let i = 0; i < data.baselessRealm.unlocks.length-1; i++) {
-        DOM(`rBu${i}`).style.backgroundColor = hasRealmUnlock(i) ? '#250505' : 'black'
+        DOM(`rBu${i}`).className = hasRealmUnlock(i) ? 'unlockedRBu' : 'rBu'
         DOM(`realm${realmUnlockData[i].unl}Tab`).innerText = hasRealmUnlock(i) ? realmUnlockData[i].unl : '???'
     }
 }
@@ -537,7 +536,7 @@ function updateRealmIncrementyHTML(){
 
 function updateRealmIUPHTML(i){
     DOM(`rIUP${i}`).innerText = getRealmIUPDesc(i)
-    if(!isRealmIUPRebuyable(i) && hasRealmIUP(i)) DOM(`rIUP${i}`).style.color = `#9e5324`
+    DOM(`rIUP${i}`).className = isRealmIUPRebuyable(i) ? 'rebuyableRIUP' : hasRealmIUP(i) ? 'boughtRIUP' : 'rIUP'
 }
 
 function updateRealmHierarchiesHTML(){
@@ -575,13 +574,13 @@ function buyRealmBUP(n){
     if(inRealmChallenge(3)) updateRealmChalHTML(3)
     if(inRealmChallenge(4)) updateRealmChalHTML(4)
 
-    DOM(`rBup${n}`).style.backgroundColor = '#250505'
+    DOM(`rBup${n}`).className = 'boughtRBup'
 }
 
 function realmBoosterRefund(){
     for (let i = 0; i < data.baselessRealm.hasBUP.length; i++) {
         data.baselessRealm.hasBUP[i] = false
-        DOM(`rBup${i}`).style.backgroundColor = 'black'
+        DOM(`rBup${i}`).className = 'rBup'
     }
     data.baselessRealm.amt = data.baselessRealm.total
     if(inAnyRealmChallenge()) controlRealmChallenge()
@@ -854,8 +853,8 @@ let getRealmAutomationDesc = (i) => realmAutomationData[i].desc
 let getRealmAutomationReq = (i) => realmAutomationData[i].req ?? ''
 
 function getRealmAutomationColors(i) {
-    if(i === 2) return [ "#20da45", "#2da000"]
-    return [ "#ff8f80", "#ff8b80" ]
+    if(i === 2) return [getCSSVariable('autoprestiger-name-text-color'), getCSSVariable('autoprestiger-rate-text-color')]
+    return [ getCSSVariable('realm-autobuyer-name-text-color'), getCSSVariable('realm-autobuyer-rate-text-color') ]
 }
 
 function isRealmAutomationUnlocked(i){

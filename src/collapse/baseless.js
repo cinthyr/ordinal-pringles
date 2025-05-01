@@ -89,19 +89,19 @@ const alephNullEffectData = [
 const realmEnhancementData = [
     {
         name: 'Total Charge',
-        color: 'goldenrod',
+        color: getCSSVariable('realm-enhancement-one-text-color'),
         amount: () => data.incrementy.totalCharge,
         effect: () => D(data.incrementy.totalCharge**2)
     },
     {
         name: 'Cardinals',
-        color: '#20da45',
+        color: getCSSVariable('realm-enhancement-two-text-color'),
         amount: () => data.collapse.cardinals,
         effect: () => Decimal.sqrt(data.collapse.cardinals)
     },
     {
         name: 'Total Fractal Energy',
-        color: '#b06cdc',
+        color: getCSSVariable('realm-enhancement-three-text-color'),
         amount: () => data.obliterate.times,
         effect: () => D(data.obliterate.times).pow(data.obliterate.times),
         unlockReq: () => getEUPEffect(1, 2)
@@ -137,11 +137,11 @@ function updateAlephNullHTML(){
 function updateDynamicShiftHTML(){
     if(data.baseless.baseless){
         DOM(`dynamicShift`).innerHTML = data.baseless.shifts < 7
-            ? `<span style="font-size: 1rem">Perform a <span style="color: darkred">Baseless Shift</span> (H)<br>Requires: &omega;<sup>&omega;</sup></span><br>This will unlock Factor ${data.baseless.shifts+1}, perform a Factor Shift reset, multiply your ℵ<sub>0</sub> gain multiplier by ${format(dynamicShiftMultipliers[0](data.baseless.shifts+1))}, multiply your Dynamic gain by ${format(dynamicShiftMultipliers[1](data.baseless.shifts+1))}, and <span style="color: darkred">double your Base</span>`
-            : `Perform a <span style="color: darkred; font-size: 1rem"">Baseless Shift</span><br>The Future Remains Unknown`
+            ? `<span style="font-size: 1rem">Perform a <span style="color: ${getCSSVariable('baseless-shift-text-shift-color')}">Baseless Shift</span> (H)<br>Requires: &omega;<sup>&omega;</sup></span><br>This will unlock Factor ${data.baseless.shifts+1}, perform a Factor Shift reset, multiply your ℵ<sub>0</sub> gain multiplier by ${format(dynamicShiftMultipliers[0](data.baseless.shifts+1))}, multiply your Dynamic gain by ${format(dynamicShiftMultipliers[1](data.baseless.shifts+1))}, and <span style="color: ${getCSSVariable('baseless-shift-text-shift-color')}">double your Base</span>`
+            : `Perform a <span style="color: ${getCSSVariable('baseless-shift-text-shift-color')}; font-size: 1rem"">Baseless Shift</span><br>The Future Remains Unknown`
     }
     else {
-        DOM(`dynamicShift`).innerHTML = `<span style="font-size: 1rem">Perform a <span style="color: darkred">Baseless Shift</span> (H)<br><span style="font-size: 0.9rem">You must be in a Baseless Realm to perform a Baseless Shift</span><br>`
+        DOM(`dynamicShift`).innerHTML = `<span style="font-size: 1rem">Perform a <span style="color: ${getCSSVariable('baseless-shift-text-shift-color')}">Baseless Shift</span> (H)<br><span style="font-size: 0.9rem">You must be in a Baseless Realm to perform a Baseless Shift</span><br>`
     }
 }
 
@@ -155,7 +155,7 @@ function makeAlephNullEffectText(){
         if(isAlephNullEffectLocked(i)) continue
         const isNextLocked = i + 1 === alephNullEffectData.length ? true : isAlephNullEffectLocked(i+1)
         const leader = isNextLocked ? ', and ' : ', '
-        text += `${leader}${getAlephNullEffectText(i)} <span style="color: #ff4400">${format(getAlephNullEffect(i))}</span>`
+        text += `${leader}${getAlephNullEffectText(i)} <span style="color: ${getCSSVariable('aleph-null-text-effect-color')}">${format(getAlephNullEffect(i))}</span>`
     }
     return text
 }
@@ -175,7 +175,7 @@ function makeRealmEnhancementText(){
 }
 
 function makeANRText(i, type){
-    return `<span style="color: #ce5c0b">${getANRText(i, type)} (${formatWhole(getANRLevel(i, type))})</span><br>Requires: ${format(getANRCost(i, type))} ℵ<sub>0</sub><br>Currently: ${formatSign(getANREffect(i, type), getANRSign(i, type))}`
+    return `<span style="color: ${getCSSVariable('aleph-null-buyable-description-text-color')}">${getANRText(i, type)} (${formatWhole(getANRLevel(i, type))})</span><br>Requires: ${format(getANRCost(i, type))} ℵ<sub>0</sub><br>Currently: ${formatSign(getANREffect(i, type), getANRSign(i, type))}`
 }
 
 function updateANRHTML(i, type){
@@ -211,7 +211,7 @@ function updateBaselessEnterHTML(id, load=false) {
     }
 
     data.baseless.mode = id
-    DOM(`baseless`).children[2].innerHTML = `<br><br>You will be trapped in <span style="color: darkred">Base ${getBaselessLock(id)}</span>, but Baseless Shifts and Boosters will be accessible and Baseless Shifts will boost ℵ<sub>0</sub> gain by ${getBaselessMult(id)}x`
+    DOM(`baseless`).children[2].innerHTML = `<br><br>You will be trapped in <span style="color: ${getCSSVariable('baseless-realm-base-text-color')}">Base ${getBaselessLock(id)}</span>, but Baseless Shifts and Boosters will be accessible and Baseless Shifts will boost ℵ<sub>0</sub> gain by ${getBaselessMult(id)}x`
 }
 
 function baselessControl(){
@@ -237,7 +237,7 @@ function baselessControl(){
         data.baseless.shifts = 0
         data.baseless.alephNull += gain
         data.ord.base = 10
-        DOM(`baseless`).children[2].innerHTML = `<br><br>You will be trapped in <span style="color: darkred">Base ${getBaselessLock(data.baseless.mode)}</span>, but Baseless Shifts and Boosters will be accessible and Baseless Shifts will boost ℵ<sub>0</sub> gain by ${getBaselessMult(data.baseless.mode)}x`
+        DOM(`baseless`).children[2].innerHTML = `<br><br>You will be trapped in <span style="color: ${getCSSVariable('baseless-realm-base-text-color')}">Base ${getBaselessLock(data.baseless.mode)}</span>, but Baseless Shifts and Boosters will be accessible and Baseless Shifts will boost ℵ<sub>0</sub> gain by ${getBaselessMult(data.baseless.mode)}x`
         switchTab('collapse')
     }
 

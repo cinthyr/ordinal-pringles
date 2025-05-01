@@ -135,14 +135,15 @@ let hyperChargeRowUnlockData = [
 ]
 
 function updateHyperchargeBottomTextHTML(){
-    let base = "If a Hypercharge is in row one or the Hypercharge above it is purchased it is considered a <span style=\"color: #20da45\">Stable Hypercharge</span><br>Only one Hypercharge from each row may be purchased. You must purchase at least one Hypercharge in a given row to access the row beneath it.<br>Purchasing a Hypercharge in a row will also unlock that row's <span style=\"color: #aed500\">Passive Hypercharge</span> for free."
-    if(data.obliterate.times > 0) base += '<br>Since you have Obliterated, <span style="color: #c281e5"> Stable Energy</span> can be used to activate a secondary Hypercharge from each row. These secondary Hypercharges are never naturally Stable.'
+    let base = `If a Hypercharge is in row one or the Hypercharge above it is purchased it is considered a <span style=color: ${getCSSVariable('stable-hypercharge-text-color')}>Stable Hypercharge</span><br>Only one Hypercharge from each row may be purchased. You must purchase at least one Hypercharge in a given row to access the row beneath it.<br>Purchasing a Hypercharge in a row will also unlock that row's <span style=color: ${getCSSVariable('unlocked-passive-hypercharge-text-color')}>Passive Hypercharge</span> for free.`
+    if(data.obliterate.times > 0) base += `<br>Since you have Obliterated, <span style="color: ${getCSSVariable('hypercharge-energy-text-color')}"> Stable Energy</span> can be used to activate a secondary Hypercharge from each row. These secondary Hypercharges are never naturally Stable.`
     DOM(`hyperchargeBottomText`).innerHTML = base
 }
 
 function updateHyperChargeRequirementHTML(i){
-    DOM(`hyperChargeRequirement${i}`).style.color =
-        data.incrementy.totalCharge > hyperChargeRequirementData[i] ? 'goldenrod' : 'gray'
+    DOM(`hyperChargeRequirement${i}`).className = data.incrementy.totalCharge > hyperChargeRequirementData[i]
+        ? 'hyperChargeRequirement'
+        : 'lockedHyperChargeRequirement'
 }
 
 function updateHyperChargeRowHTML(i){
@@ -158,9 +159,9 @@ function getHyperChargeUpgradeText(i, forceHideSecondary = false){
         ? `<br>${formatWhole(hyperChargeUpgradeData[i].cost)} Charge`
         : `<br>Currently: ${formatSign(hyperChargeUpgradeData[i].effect(), hyperChargeUpgradeData[i].sign)}`
     let secondary = !hasHypercharge(i) && shouldDisplaySecondary(i) && !forceHideSecondary
-        ? `<span style="color: #a08fa2"> and ${getSecondaryHyperchargeCost()} Stable Energy</span>` : ''
-    let stabilizer = shouldDisplayStabilizer(i) ? `<br><b style="color: #a1936a">Stabilize for 1 Unbounded Energy</b>` : ''
-    let isStabilized = shouldForceHyperchargeStable(i) ? `<br><b style="color: #7aa16a">Forcefully Stabilized</b>` : ''
+        ? `<span style="color: ${getCSSVariable('secondary-hypercharge-cost-text-color')}"> and ${getSecondaryHyperchargeCost()} Stable Energy</span>` : ''
+    let stabilizer = shouldDisplayStabilizer(i) ? `<br><b style="color: ${getCSSVariable('forceful-hypercharge-stabilization-cost-text-color')}">Stabilize for 1 Unbounded Energy</b>` : ''
+    let isStabilized = shouldForceHyperchargeStable(i) ? `<br><b style="color: ${getCSSVariable('forceful-hypercharge-stabilization-text-color')}">Forcefully Stabilized</b>` : ''
     return text+end+secondary+stabilizer+isStabilized
 }
 function previewHyperchargeEffectHTML(i, shouldDisplay){
@@ -173,10 +174,8 @@ function updateHyperChargeTextHTML(i, type, customElement = null, forceHideSecon
     if(type === 'Upgrade'){
         element.innerHTML = getHyperChargeUpgradeText(i, forceHideSecondary)
         element.className = isHyperchargeStable(i) ? 'stableHypercharge' : hasHypercharge(i) ? isHyperchargeSecondary(i) ? 'secondaryHypercharge' : 'boughtHypercharge' : 'unboughtHypercharge'
-        //element.style.color = isHyperchargeStable(i) ? '#20da45' : hasHypercharge(i) ? isHyperchargeSecondary(i) ? '#c281e5' : '#d5ad00' : 'gray'
-        //element.style.borderColor = isHyperchargeStable(i) ? '#0e591d' : hasHypercharge(i) && isHyperchargeSecondary(i) ? '#503857' : '#615400'
-    }
-    if(type === 'QOL') element.style.color = hasPassiveHypercharge(i) ? '#aed500' : 'gray'
+ }
+    if(type === 'QOL') element.className = hasPassiveHypercharge(i) ? 'hyperChargeQOL' : 'lockedHyperChargeQOL'
 }
 function updateAllHyperchargeHTML(forceUpdate = false){
     for (let i = 0; i < data.hyper.hasUpgrade.length/3; i++) {

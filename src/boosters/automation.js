@@ -172,11 +172,11 @@ function getAutomationEnabled(i, j){
     }
 }
 function getAutomationTextColors(i) {
-    if(i < 2) return [ "#80ceff", "#8080FF" ]
-    if(i === 2) return [ "#20da45", "#2da000"]
+    if(i < 2) return [getCSSVariable('autobuyer-name-text-color'), getCSSVariable('autobuyer-rate-text-color')]
+    if(i === 2) return [getCSSVariable('autoprestiger-name-text-color'), getCSSVariable('autoprestiger-rate-text-color')]
 }
 
 function updateAutomationTabHTML(){
-    DOM(`auto2Tab`).style.color = isAutomationUnlocked(2, 0) ? getAutomationTextColors(2)[0] : '#8080FF'
-    DOM(`auto2Tab`).style.borderColor = isAutomationUnlocked(2, 0) ? getAutomationTextColors(2)[1] : '#1e47d0'
+    DOM(`auto2Tab`).style.color = isAutomationUnlocked(2, 0) ? getCSSVariable('collapse-tab-text-color') : getCSSVariable('boost-tab-text-color')
+    DOM(`auto2Tab`).style.borderColor = isAutomationUnlocked(2, 0) ? getCSSVariable('collapse-tab-border-color') : getCSSVariable('boost-tab-border-color')
 }

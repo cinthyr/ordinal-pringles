@@ -1,6 +1,5 @@
 let pringleData = [
     {
-        color: '#6ba000',
         colorDesc: 'Green',
         name: 'Flavorful',
         desc: 'Boosts the First, Fifth, and Sixth Cardinal Upgrades',
@@ -13,7 +12,6 @@ let pringleData = [
         cost: () => D(1e10).pow((data.obliterate.pringleAmount[0]+1)*Math.pow(data.obliterate.pringleAmount[0]+1, 1/1.5))
     },
     {
-        color: '#73af80',
         colorDesc: 'Green',
         name: 'Crispy',
         desc: 'Boosts the Second Cardinal Upgrade',
@@ -26,7 +24,6 @@ let pringleData = [
         cost: () => D(1e30).pow((data.obliterate.pringleAmount[1]+1)*Math.sqrt(data.obliterate.pringleAmount[1]+1))
     },
     {
-        color: '#2da000',
         colorDesc: 'Green',
         name: 'Perfected',
         desc: 'Boosts the Seventh Cardinal Upgrade and Boosts Cardinal Gain',
@@ -40,7 +37,6 @@ let pringleData = [
     },
 
     {
-        color: '#ae3510',
         colorDesc: 'Orange',
         name: 'Popular',
         desc: 'Boosts AutoClicker Speeds and Dynamic Cap',
@@ -53,7 +49,6 @@ let pringleData = [
         cost: () => D(1e20).times(Math.pow(10, data.obliterate.pringleAmount[3]))
     },
     {
-        color: '#ae8910',
         colorDesc: 'Orange',
         name: 'Limited-Edition',
         desc: 'Boosts ℵ<sub>0</sub> Gain',
@@ -66,7 +61,6 @@ let pringleData = [
         cost: () => D(1e20).times(Math.pow(32, data.obliterate.pringleAmount[4]))
     },
     {
-        color: '#ae6610',
         colorDesc: 'Orange',
         name: 'Perfected',
         desc: 'Provides free levels of the Fourth and Fifth ℵ<sub>0</sub> Rebuyables',
@@ -80,7 +74,6 @@ let pringleData = [
     },
 
     {
-        color: '#0091a2',
         colorDesc: 'Blue',
         name: 'Delicious',
         desc: "Boosts the FGH Effect and SGH Effect",
@@ -93,7 +86,6 @@ let pringleData = [
         cost: () => D(1e30).pow(Math.sqrt(data.obliterate.pringleAmount[6]+1))
     },
     {
-        color: '#3e7eab',
         colorDesc: 'Blue',
         name: 'Crunchy',
         desc: "Boosts FGH and SGH Gain",
@@ -106,7 +98,6 @@ let pringleData = [
         cost: () => D(1e30).pow(Math.sqrt(data.obliterate.pringleAmount[7]+1))
     },
     {
-        color: '#3d40fd',
         colorDesc: 'Blue',
         name: 'Perfected',
         desc: "Boosts the Hierarchy Rebuyable Caps",
@@ -120,7 +111,6 @@ let pringleData = [
     },
 
     {
-        color: '#af1fad',
         colorDesc: 'Pink-Purple',
         name: 'Barbecue',
         desc: "Boosts AutoBuyer Speed",
@@ -150,6 +140,8 @@ function initPringleAlchemy(){
 }
 function initPringles(){
     for (let i = 0; i < pringleData.length; i++) {
+        pringleData[i].color = getCSSVariable(`pringle-${i}-color`)
+
         DOM(`pringle${i}`).addEventListener("mouseenter", (e) => displayPringleButton(e, pringleData[i], i))
         DOM(`pringle${i}`).addEventListener("click", () => buyPringle(pringleData[i], i))
         DOM(`pringle${i}`).style.border = `2px solid ${pringleData[i].color}`
@@ -172,6 +164,7 @@ function displayPringleButton(event, pringleData, i, type = 'pringleButton'){
     button.style.left = `${event.pageX}px`
     button.style.top = `${event.pageY}px`
 
+    // EXEMPT FROM THEME: Color should never be shown
     button.style.color = pringleData != null ? pringleData.color : '#ffffff'
     if(type === 'pringleButton') pringleData != null ? updatePringleButtonText(pringleData, i) : updatePurityText(i)
 }

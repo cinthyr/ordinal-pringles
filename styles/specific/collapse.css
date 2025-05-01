@@ -10,7 +10,7 @@
 
 #cardinalsText{
     font-size: 1.1rem;
-    color: var(--cardinals-text-color);
+    color: var(--collapse-text-cardinals-color);
 }
 
 #mobilecollapseButton{
@@ -74,10 +74,6 @@
     color: var(--hypercharge-help-text-primary-color);
 }
 
-#alephNull{
-    color: var(--aleph-null-text-primary-color);
-}
-
 #baseless{
     width: 25rem;
     height: 10rem;
@@ -119,7 +115,7 @@
 #alephOmega{
     margin-top: 1rem;
     font-family: DosisSemiBold, serif;
-    color: var(--aleph-omega-text-color);
+    color: var(--aleph-omega-primary-text-color);
 }
 
 #rBoosterText{

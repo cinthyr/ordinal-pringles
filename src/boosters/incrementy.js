@@ -52,7 +52,6 @@ function initIUPs(){
         let r = i === 0 || i === 4
         for (let n = 0; n < 3; n++) {
             let iup = document.createElement('button')
-            iup.className = 'iup'
             iup.id = `iup${total}`
             iup.innerHTML = r ? `[UP${total-2}] ${iupDesc[total]} (${formatWhole(data.incrementy.rebuyableAmt[total])})<br>${format(getRebuyableCost(total))} Incrementy\nCurrently: ${format(iupEffects[total]())}x`
             : `[UP${total-2}] ${iupDesc[total]}<br>${format(iupCosts[total])} Incrementy`
@@ -65,11 +64,11 @@ function initIUPs(){
             DOM(`iup${i}`).addEventListener('mouseenter', ()=>switchIUPText(i, true))
             DOM(`iup${i}`).addEventListener('mouseleave', ()=>switchIUPText(i, false))
             DOM(`iup${i}`).addEventListener('click', ()=>buyIUP(i))
-            DOM(`iup${i}`).style.color = data.incrementy.hasIUP[i]?'#f542a4':'#8080FF'
+            DOM(`iup${i}`).className = data.incrementy.hasIUP[i] ? 'boughtIUP' : 'iup'
         }
         else{
             DOM(`iup${i}`).addEventListener('click', ()=>buyRUP(i))
-            DOM(`iup${i}`).style.color = '#8080FF'
+            DOM(`iup${i}`).className = 'rebuyableIUP'
         }
     }
 }
@@ -80,7 +79,7 @@ function buyIUP(i){
     data.incrementy.hasIUP[i] = true
     data.incrementy.amt = data.incrementy.amt.sub(iupCosts[i])
 
-    DOM(`iup${i}`).style.color = '#f542a4'
+    DOM(`iup${i}`).className = 'boughtIUP'
 }
 function buyRUP(i){
     let reb = i > 2 ? i-6 : i
@@ -154,8 +153,6 @@ function chargeBUP(i, bottomRow){
 
     DOM(`bup${i}`).className = 'chargedBUP'
     DOM(`bup${i}`).innerText = `${getBUPDesc(i)}`
-    DOM(`bup${i}`).style.color = 'goldenrod'
-    DOM(`bup${i}`).style.backgroundColor = '#3b3100'
 }
 let getBottomRowChargeCost = () => 13+(12*data.boost.bottomRowCharges)
 
@@ -164,10 +161,8 @@ function respecCharge(c=false){
 
     for (let i = 0; i < data.boost.isCharged.length; i++) {
         data.boost.isCharged[i] = false
-        DOM(`bup${i}`).className = 'bup'
+        DOM(`bup${i}`).className = data.boost.hasBUP[i] ? 'boughtBUP' : 'bup'
         DOM(`bup${i}`).innerHTML = `${getBUPDesc(i)}`
-        DOM(`bup${i}`).style.color = `#8080FF`
-        if(data.boost.hasBUP[i]) DOM(`bup${i}`).style.backgroundColor = `#002480`
     }
     data.incrementy.charge = data.incrementy.totalCharge-getTotalChargeInHypercharge()
     data.boost.bottomRowCharges = 0

@@ -55,7 +55,7 @@ const treeOptions = {
         'font' : {
             'color' : 'black'
         },
-        'color' : '#615a6c',
+        'color' : getCSSVariable('energy-tree-locked-node-color'),
         'shape' : 'circle',
         'size' : 30,
         'borderWidth' : 2,
@@ -108,7 +108,9 @@ function loadNodeColors(respec = false){
 }
 function setNodeColor(id, forceFalse = false){
     let node = treeData.nodes.get(id)
-    node.color = hasTreeUpgrade(id) && !forceFalse ? '#996cdc' : '#615a6c'
+    node.color = hasTreeUpgrade(id) && !forceFalse
+        ? getCSSVariable('energy-tree-unlocked-node-color')
+        : getCSSVariable('energy-tree-locked-node-color')
     treeData.nodes.update(node)
 }
 

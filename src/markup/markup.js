@@ -26,15 +26,18 @@ function updateMarkupHTML(){
     }
     DOM("factorText").innerText = `Your Factors are multiplying AutoClicker speed by a total of ${formatWhole(totalFactorEffect())}x`
 
-    //DOM("factorShiftButton").style.borderColor = data.ord.base===3&&data.boost.times===0&&!hasSluggishMilestone(0)?`#1e47d0`:`#785c13`
-    DOM(getAdaptiveButton("factorShiftButton")).style.color = data.ord.base===3&&data.boost.times===0&&!hasSluggishMilestone(0)?`#8080FF`:`goldenrod`
+    DOM(getAdaptiveButton("factorShiftButton")).style.color = data.ord.base===3&&data.boost.times===0&&!hasSluggishMilestone(0)
+        ? getCSSVariable('factor-boost-button-default-text-color')
+        : getCSSVariable('factor-shift-button-default-text-color')
 
     DOM("dynamicTab").innerText = data.markup.shifts===7||data.chal.active[4]||data.baseless.baseless?'Dynamic':'???'
     DOM("dynamicText").innerText = `Your Dynamic Factor is ${data.chal.active[4]?'dividing':'multiplying'} AutoClickers by ${format(data.dy.level, 3)}\nIt increases by ${format(dyGain())}/s, and caps at ${format(getDyCap())}`
     DOM("dynamicText2").innerText = `Your Dynamic Factor is ${format(data.dy.level, 3)} [+${format(dyGain())}/s]. It caps at ${format(getDyCap())}`
 
     DOM(getAdaptiveButton("factorBoostButton")).innerHTML = `Perform ${getBulkBoostAmt() < 2 ? `${inAnyPurification() ? `an` : `a`} ${boostName()} Boost` : getBulkBoostAmt()+` ${boostName()} Boosts`} [+${format(boosterGain())}] (B)${data.boost.times + getBulkBoostAmt() - 1 < 34 ? `<br>Requires ${displayBoostReq()}` : ''}`
-    DOM(getAdaptiveButton("factorBoostButton")).style.color = data.ord.isPsi&&data.ord.ordinal.gte(boostReq())?'#85edff':'#8080FF'
+    DOM(getAdaptiveButton("factorBoostButton")).style.color = data.ord.isPsi&&data.ord.ordinal.gte(boostReq())
+        ? getCSSVariable('factor-boost-button-available-text-color')
+        : getCSSVariable('factor-boost-button-default-text-color')
 
     if(getSimpleSetting('boostBar')) updateProgressBar()
 }

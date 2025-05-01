@@ -411,9 +411,7 @@ function checkAchs(){
     for (let i= 0; i < achievements.length; i++){
         let ach = DOM(`ach${i}`)
         if(hasAchievement(i) && !data.achs[i]) data.achs[i] = true
-        ach.style.backgroundColor = hasAchievement(i) ? '#2c4126' : '#151515'
-        ach.style.border = hasAchievement(i) ? '1px solid goldenrod' : '1px solid #464646'
-        ach.style.color = hasAchievement(i) ? 'goldenrod' : '#9d5700'
+        ach.className = hasAchievement(i) ? 'completedAchievement' : 'achievement'
     }
 }
 

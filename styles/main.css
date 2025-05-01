@@ -72,9 +72,18 @@
 .bup{
     width: 13rem;
     height: 6rem;
-    border: 2px solid var(--BUP-border-color);
-    color: var(--BUP-text-color);
-    background: black;
+    border: 2px solid var(--unbought-BUP-border-color);
+    color: var(--unbought-BUP-text-color);
+    background: var(--unbought-BUP-background-color);
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;
+}
+.boughtBUP{
+    width: 13rem;
+    height: 6rem;
+    border: 2px solid var(--bought-BUP-border-color);
+    color: var(--bought-BUP-text-color);
+    background: var(--bought-BUP-background-color);
     margin-top: 0.5rem;
     margin-left: 0.5rem;
 }
@@ -83,16 +92,34 @@
     height: 6rem;
     border: 2px solid var(--charged-BUP-border-color);
     color: var(--charged-BUP-text-color);
-    background: black;
+    background: var(--charged-BUP-background-color);
     margin-top: 0.5rem;
     margin-left: 0.5rem;
 }
 .iup{
     width: 15rem;
     height: 5.5rem;
-    border: 2px solid var(--IUP-border-color);
-    color: var(--IUP-text-color);
-    background: black;
+    border: 2px solid var(--unbought-IUP-border-color);
+    color: var(--unbought-IUP-text-color);
+    background: var(--unbought-IUP-background-color);
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;
+}
+.boughtIUP{
+    width: 15rem;
+    height: 5.5rem;
+    border: 2px solid var(--bought-IUP-border-color);
+    color: var(--bought-IUP-text-color);
+    background: var(--bought-IUP-background-color);
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;
+}
+.rebuyableIUP{
+    width: 15rem;
+    height: 5.5rem;
+    border: 2px solid var(--rebuyable-IUP-border-color);
+    color: var(--rebuyable-IUP-text-color);
+    background: var(--rebuyable-IUP-background-color);
     margin-top: 0.5rem;
     margin-left: 0.5rem;
 }
@@ -102,7 +129,7 @@
     width: 10rem;
     min-height: 2rem;
     border: 2px solid var(--autobuyer-border-color);
-    color: var(--autobuyer-text-color);
+    color: var(--autobuyer-rate-text-color);
     background: black;
     margin-left: 0.5rem;
 }
@@ -111,7 +138,7 @@
     width: 10rem;
     min-height: 2rem;
     border: 2px solid var(--autobuyer-border-color);
-    color: var(--autobuyer-text-color);
+    color: var(--autobuyer-rate-text-color);
     background: black;
     margin-left: 0.5rem;
 }
@@ -120,7 +147,7 @@
     width: 13rem;
     min-height: 2rem;
     border: 2px solid var(--autoprestiger-border-color);
-    color: var(--autoprestiger-text-color);
+    color: var(--autoprestiger-rate-text-color);
     background: black;
     margin-left: 0.5rem;
 }
@@ -129,7 +156,7 @@
     width: 10rem;
     min-height: 2rem;
     border: 2px solid var(--realm-autobuyer-border-color);
-    color: var(--realm-autobuyer-text-color);
+    color: var(--realm-autobuyer-name-text-color);
     background: black;
     margin-left: 0.5rem;
 }
@@ -141,7 +168,25 @@
     height: 12rem;
     border: 2px solid var(--incomplete-challenge-border-color);
     color: var(--incomplete-challenge-text-color);
-    background: black;
+    background: var(--incomplete-challenge-background-color);
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;
+}
+.completeChallenge{
+    width: 20rem;
+    height: 12rem;
+    border: 2px solid var(--complete-challenge-border-color);
+    color: var(--complete-challenge-text-color);
+    background: var(--complete-challenge-background-color);
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;
+}
+.activeChallenge{
+    width: 20rem;
+    height: 12rem;
+    border: 2px solid var(--active-challenge-border-color);
+    color: var(--active-challenge-text-color);
+    background: var(--active-challenge-background-color);
     margin-top: 0.5rem;
     margin-left: 0.5rem;
 }
@@ -153,6 +198,15 @@
     margin-left: 0.5rem;
     margin-top: 0.3rem;
     color: var(--incomplete-achievement-text-color);
+}
+.completeAchievement{
+    width: 7rem;
+    height: 5rem;
+    border: 1px solid var(--complete-achievement-border-color);
+    background: var(--complete-achievement-background-color);
+    margin-left: 0.5rem;
+    margin-top: 0.3rem;
+    color: var(--complete-achievement-text-color);
 }
 .hierarchyContainer{
     min-width: 50%;
@@ -188,8 +242,8 @@
 .hup{
     width: 15rem;
     height: 6rem;
-    border: 2px solid var(--HUP-border-color);
-    color: var(--HUP-text-color);
+    border: 2px solid var(--hierarchy-milestone-border-color);
+    color: var(--hierarchy-milestone-text-color);
     background: black;
 }
 .bpEffectContainer{
@@ -279,9 +333,17 @@
 .cup{
     width: 15rem;
     height: 6rem;
-    border: 2px solid var(--CUP-border-color);
-    color: var(--CUP-text-color);
-    background: black;
+    border: 2px solid var(--unbought-CUP-border-color);
+    color: var(--unbought-CUP-text-color);
+    background: var(--unbought-CUP-background-color);
+    margin-left: 0.5rem;
+}
+.boughtCUP{
+    width: 15rem;
+    height: 6rem;
+    border: 2px solid var(--bought-CUP-border-color);
+    color: var(--bought-CUP-text-color);
+    background: var(--bought-CUP-background-color);
     margin-left: 0.5rem;
 }
 .drain{
@@ -289,7 +351,7 @@
     height: 4rem;
     border: 2px solid var(--drain-border-color);
     color: var(--drain-text-color);
-    background: black;
+    background: var(--drain-background-color);
     margin-left: 0.5rem;
 }
 .sluggish{
@@ -298,6 +360,14 @@
     border: 1px solid var(--incomplete-sluggish-milestone-border-color);
     color: var(--incomplete-sluggish-milestone-text-color);
     background: var(--incomplete-sluggish-milestone-background-color);
+    margin-bottom: 0.5rem;
+}
+.completeSluggish{
+    width: 50rem;
+    height: 4.8rem;
+    border: 1px solid var(--complete-sluggish-milestone-border-color);
+    color: var(--complete-sluggish-milestone-text-color);
+    background: var(--complete-sluggish-milestone-background-color);
     margin-bottom: 0.5rem;
 }
 .darknessButton{
@@ -374,8 +444,19 @@
     width: 9rem;
     height: 6rem;
     background-color: black;
-    border: 2px solid var(--passive-hypercharge-border-color);
-    color: var(--passive-hypercharge-text-color);
+    border: 2px solid var(--unlocked-passive-hypercharge-border-color);
+    color: var(--unlocked-passive-hypercharge-text-color);
+    background: var(--unlocked-passive-hypercharge-background-color);
+    font-family: DosisLight, serif;
+    margin: 1rem;
+}
+.lockedHyperChargeQOL{
+    width: 9rem;
+    height: 6rem;
+    background-color: black;
+    border: 2px solid var(--locked-passive-hypercharge-border-color);
+    color: var(--locked-passive-hypercharge-text-color);
+    background: var(--locked-passive-hypercharge-background-color);
     font-family: DosisLight, serif;
     margin: 1rem;
 }
@@ -399,6 +480,13 @@
     bottom: 0;
     left: 0.5rem;
     color: var(--hypercharge-charge-row-requirement-text-color);
+    font-family: DosisLight, serif;
+}
+.lockedHyperChargeRequirement{
+    position: absolute;
+    bottom: 0;
+    left: 0.5rem;
+    color: var(--locked-hypercharge-charge-row-requirement-text-color);
     font-family: DosisLight, serif;
 }
 
@@ -426,8 +514,16 @@
     margin-right: 0.5rem;
     width: 20rem;
     height: 10rem;
-    color: white;
-    background: black;
+    background: var(--normal-purification-background-color);
+    border: 2px solid var(--purification-border-color);
+}
+.activePurification{
+    margin-bottom: 0.5rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    width: 20rem;
+    height: 10rem;
+    background: var(--active-purification-background-color);
     border: 2px solid var(--purification-border-color);
 }
 .aoRow{
@@ -441,7 +537,7 @@
     width: 15rem;
     height: 7rem;
     border: 2px solid var(--aleph-omega-buyable-border-color);
-    color: var(--aleph-omega-buyable-text-color);
+    color: var(--aleph-omega-buyable-primary-text-color);
     background: black;
     margin-left: 0.25rem;
     margin-right: 0.25rem;
@@ -454,8 +550,19 @@
     height: 5rem;
     box-shadow: rgba(0,0,0,0.2) 0 2px 3px, inset rgba(0,0,0,0.2) 0 -1px 2px;
     border: 2px solid var(--beth-omega-milestone-border-color);
-    color: var(--beth-omega-milestone-text-color);
-    background: black;
+    color: var(--beth-omega-milestone-requirement-text-color);
+    background: var(--locked-beth-omega-milestone-background-color);
+}
+.unlockedAOMilestone{
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    margin-top: 0.5rem;
+    width: 28rem;
+    height: 5rem;
+    box-shadow: rgba(0,0,0,0.2) 0 2px 3px, inset rgba(0,0,0,0.2) 0 -1px 2px;
+    border: 2px solid var(--beth-omega-milestone-border-color);
+    color: var(--beth-omega-milestone-requirement-text-color);
+    background: var(--unlocked-beth-omega-milestone-background-color);
 }
 .obliterateTabButton{
     width: 9rem;
@@ -471,7 +578,17 @@
 .passiveUpgrade{
     border: 2px solid var(--passive-energy-upgrade-border-color);
     color: var(--passive-energy-upgrade-text-color);
-    background: black;
+    background: var(--passive-energy-upgrade-background-color);
+    margin-top: 0.5rem;
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+    width: 12rem;
+    height: 6rem;
+}
+.boughtPassiveUpgrade{
+    border: 2px solid var(--bought-passive-energy-upgrade-border-color);
+    color: var(--bought-passive-energy-upgrade-text-color);
+    background: var(--bought-passive-energy-upgrade-background-color);
     margin-top: 0.5rem;
     margin-left: 0.25rem;
     margin-right: 0.25rem;
@@ -528,7 +645,7 @@
     width: 22rem;
     height: 12rem;
     border: 2px solid var(--stable-energy-button-border-color);
-    color: var(--stable-energy-button-text-color);
+    color: var(--stable-energy-description-text-color);
     background: black;
     margin: 1rem 1rem 0;
     border-radius: 10px 10px 0 0;
@@ -552,15 +669,35 @@
     margin-top: 0.5rem;
     margin-left: 0.5rem;
 }
-.rBu{
-    width: 15rem;
+.boughtRBup{
+    width: 13rem;
     height: 6rem;
-    border: 2px solid var(--realm-booster-unlock-border-color);
-    color: var(--realm-booster-unlock-text-color);
-    background: black;
+    border: 2px solid var(--bought-realm-BUP-border-color);
+    color: var(--bought-realm-BUP-text-color);
+    background: var(--bought-realm-BUP-background-color);
     margin-top: 0.5rem;
     margin-left: 0.5rem;
 }
+
+.rBu{
+    width: 15rem;
+    height: 6rem;
+    border: 2px solid var(--unbought-realm-BUP-border-color);
+    color: var(--unbought-realm-BUP-text-color);
+    background: var(--unbought-realm-BUP-background-color);
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;
+}
+.unlockedRBu{
+    width: 15rem;
+    height: 6rem;
+    border: 2px solid var(--bought-realm-BUP-border-color);
+    color: var(--bought-realm-BUP-text-color);
+    background: var(--bought-realm-BUP-background-color);
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;
+}
+
 .rBoostTopButton{
     width: 20rem;
     height: 1.5rem;
@@ -602,9 +739,29 @@
 .rIUP{
     width: 17rem;
     height: 5.5rem;
-    border: 2px solid var(--realm-IUP-border-color);
-    color: var(--realm-IUP-text-color);
-    background: black;
+    border: 2px solid var(--unbought-realm-IUP-border-color);
+    color: var(--unbought-realm-IUP-text-color);
+    background: var(--unbought-IUP-background-color);
+    margin-top: 0.5rem;
+    margin-right: 0.25rem;
+    margin-left: 0.25rem;
+}
+.boughtRIUP{
+    width: 17rem;
+    height: 5.5rem;
+    border: 2px solid var(--bought-realm-IUP-border-color);
+    color: var(--bought-realm-IUP-text-color);
+    background: var(--bought-IUP-background-color);
+    margin-top: 0.5rem;
+    margin-right: 0.25rem;
+    margin-left: 0.25rem;
+}
+.rebuyableRIUP{
+    width: 17rem;
+    height: 5.5rem;
+    border: 2px solid var(--rebuyable-realm-IUP-border-color);
+    color: var(--rebuyable-realm-IUP-text-color);
+    background: var(--rebuyable-realm-IUP-background-color);
     margin-top: 0.5rem;
     margin-right: 0.25rem;
     margin-left: 0.25rem;

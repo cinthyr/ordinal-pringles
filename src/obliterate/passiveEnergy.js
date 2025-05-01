@@ -35,7 +35,7 @@ let passiveEnergyEffects = [
     () => 1.5**getTotalPassiveEnergy()
 ]
 
-let updatePassiveEnergyText = () => DOM(`passiveEnergyText`).innerHTML = `You have <span style="font-family: DosisSemiBold; color: #bd80ff">${getCurrentPassiveEnergy()} Passive Energy</span><br><span style="font-size: 0.9rem">You have <span style="color: #bd80ff">${getTotalPassiveEnergy()} Total Passive Energy</span>, multiplying <span style="color: #95d0ef">AutoBuyer speed by ${format(getPassiveEnergyEffect(0))}x</span> and <span style="color: #ff4848">ℵ<sub>&omega;</sub> gain by ${format(getPassiveEnergyEffect(1))}x</span></span>`
+let updatePassiveEnergyText = () => DOM(`passiveEnergyText`).innerHTML = `You have <span style="font-family: DosisSemiBold; color: ${getCSSVariable('passive-energy-text-passive-energy-color')}">${getCurrentPassiveEnergy()} Passive Energy</span><br><span style="font-size: 0.9rem">You have <span style="color: ${getCSSVariable('passive-energy-text-passive-energy-color')}">${getTotalPassiveEnergy()} Total Passive Energy</span>, multiplying <span style="color: ${getCSSVariable('passive-energy-text-autobuyer-color')}">AutoBuyer speed by ${format(getPassiveEnergyEffect(0))}x</span> and <span style="color: ${getCSSVariable('passive-energy-text-aleph-omega-color')}">ℵ<sub>&omega;</sub> gain by ${format(getPassiveEnergyEffect(1))}x</span></span>`
 function initPassiveEnergyUpgrades(){
     let total = 0
     for (let i = 0; i < 5; i++) {
@@ -49,7 +49,7 @@ function initPassiveEnergyUpgrades(){
             upgrade.className = 'passiveUpgrade'
             upgrade.id = `peup${total}`
             upgrade.innerHTML = `${passiveUpgradeData[total]}`
-            upgrade.style.color = hasPassiveUpgrade(total) ? '#e180ff' : 'gray'
+            upgrade.className = hasPassiveUpgrade(total) ? 'boughtPassiveUpgrade' : 'passiveUpgrade'
             DOM(`peupRow${i}`).append(upgrade)
 
             ++total
@@ -69,7 +69,7 @@ function buyPEUP(i){
         //--data.obliterate.passiveEnergy
         data.obliterate.hasPassiveUpgrade[i] = true
 
-        DOM(`peup${i}`).style.color = '#e180ff'
+        DOM(`peup${i}`).className = 'boughtPassiveUpgrade'
         updatePassiveEnergyText()
     }
 }
@@ -81,7 +81,7 @@ function passiveRespecConfirm(){
 function respecPassiveUpgrades(bypassReset = false){
     //data.obliterate.passiveEnergy = getTotalFractalEnergyInvested(true)
     for (let i = 0; i < data.obliterate.hasPassiveUpgrade.length; i++) {
-        DOM(`peup${i}`).style.color = 'gray'
+        DOM(`peup${i}`).className = 'passiveUpgrade'
         data.obliterate.hasPassiveUpgrade[i] = false
     }
     if(!bypassReset) obliterateReset()

@@ -255,7 +255,7 @@ function displaySetting(i){
     const settingData = settingsData[i]
     let text = settingData.desc
     if(settingData.specialDisplay !== undefined){
-        text += ` <span style="color: #95d0ef">[${settingData.specialDisplay()}]</span>`
+        text += ` <span style="color: ${getCSSVariable('setting-special-text-color')}">[${settingData.specialDisplay()}]</span>`
     }
     else if(settingData.isMulti){
         const index = settingData.multiData.findIndex(item => item.desc === data.settings[settingData.id])
@@ -264,7 +264,9 @@ function displaySetting(i){
         text += ` <span style="color: ${color}">[${desc}]</span>`
     }
     else{
-        const color = data.settings[settingData.id] ? '#2da000' : '#ce0b0b'
+        const color = data.settings[settingData.id]
+            ? getCSSVariable('setting-on-text-color')
+            : getCSSVariable('setting-off-text-color')
         text += ` <span style="color: ${color}">[${formatBool(data.settings[settingData.id])}]</span>`
     }
     return text

@@ -35,7 +35,7 @@ function initPurityPlane(){
 }
 
 function setupPurityPoint(i, point){
-    if(isPurityPointUnlocked(i)) point.style.borderColor = '#949494'
+    if(isPurityPointUnlocked(i)) point.style.borderColor = getCSSVariable('unassigned-purity-point-color')
     if(isPurityPointAssigned(i)){
         point.style.borderColor = pringleData[data.purity.assignment[i]].color
         if(data.settings.noColorPringles) point.innerText = `${data.purity.assignment[i]}`
@@ -43,12 +43,6 @@ function setupPurityPoint(i, point){
 
     point.addEventListener('mouseover', (e) => displayPringleButton(e, null, i, 'pringleButton'))
     point.addEventListener('click', () => assignPringle(i, 1))
-}
-
-function updateAllMiscPringleColors(mode){
-    for (let i = 0; i < 10; i++) {
-        DOM(`${mode}Pringle${i}`).style.borderColor = isPringleAssigned(i) ? '#5b5b5b' : getPringleData(i).color
-    }
 }
 
 function updatePurityText(i) {
@@ -83,7 +77,7 @@ function assignPringle(i, type, skipUpdate = false){
         updatePurityText(i)
     }
     if(type === 2){
-        DOM(`purityPoint${i}`).style.borderColor = '#949494'
+        DOM(`purityPoint${i}`).style.borderColor = getCSSVariable('unassigned-purity-point-color')
         if(data.settings.noColorPringles) DOM(`purityPoint${i}`).innerText = ''
         data.purity.isAssigned[i] = false
         data.purity.assignment[i] = false
@@ -97,7 +91,7 @@ function buyPurityPoint(i){
     data.purity.isUnlocked[i] = true
     spendFractalEnergy()
 
-    DOM(`purityPoint${i}`).style.borderColor = '#949494'
+    DOM(`purityPoint${i}`).style.borderColor = getCSSVariable('unassigned-purity-point-color')
     updatePassiveEnergyText(i)
 }
 

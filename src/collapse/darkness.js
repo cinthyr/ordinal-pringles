@@ -154,18 +154,18 @@ function updateDarknessDepthHTML(){
     for (let i = 1; i < data.darkness.depth+1; i++) {
         let currentDepth = depthEffects[i]
         if(currentDepth.buffEffect !== undefined){
-            text += `<br><span style="color: #887bc1">${currentDepth.buffEffect.desc}</span>`
+            text += `<br><span style="color: ${getCSSVariable('darkness-button-depth-effect-text-color')}">${currentDepth.buffEffect.desc}</span>`
             if(!currentDepth.buffEffect.hideEffect) text += format(getDepthBuff(i))
         }
         if(currentDepth.nerfEffect !== undefined){
-            text += `<br><span style="color: #887bc1">${currentDepth.nerfEffect.desc}</span>`
+            text += `<br><span style="color: ${getCSSVariable('darkness-button-depth-effect-text-color')}">${currentDepth.nerfEffect.desc}</span>`
             if(!currentDepth.nerfEffect.hideEffect) text += format(getDepthNerf(i))
         }
     }
     DOM('darken').innerHTML = text
 }
 function updateDepthSelectHTML(i){
-    DOM(`depthDescriptor`).innerHTML = `<span style="color: #9e89f6">Depth ${i + 1}${i < 3 ? ' and below' : ''}:</span> ${depthEffects[i].buff}${depthEffects[i].nerf}`
+    DOM(`depthDescriptor`).innerHTML = `<span style="color: ${getCSSVariable('depth-description-depth-text-color')}">Depth ${i + 1}${i < 3 ? ' and below' : ''}:</span> ${depthEffects[i].buff}${depthEffects[i].nerf}`
 }
 function setDarknessDepth(i){
     if(data.darkness.darkened) return
