@@ -21,6 +21,7 @@
     width: 100vw;
     justify-items: center;
     place-content: center;
+    margin-top: 1rem;
 }
 
 #colorPicker {
@@ -95,12 +96,7 @@
 }
 
 #themeReset{
-    width: 15rem;
-    height: 3rem;
-    margin-top: 0.5rem;
-    color: var(--setting-text-color);
-    background: black;
-    border: 2px solid var(--setting-border-color);
+    width: 10rem;
 }
 
 /* TODO: ? */

@@ -266,7 +266,7 @@
     --depth-text-color: #9f9fcce1;
     --depth-description-depth-text-color: #9e89f6;
 
-    --dup-border-color: #26004C4C;
+    --dup-border-color: rgba(125, 59, 190, 0.3);
     --dup-background-color: #000000FF;
     --dup-text-color: #9f9fcce1;
 

@@ -14,6 +14,17 @@ function createPrompt(name,func,useInput,desc='') {
     DOM('promptContainer').style.display = 'block'
     useInput?DOM('promptButton').addEventListener('click', ()=> func(DOM('promptInput').value)):DOM('promptButton').addEventListener('click', ()=> func())
 }
+
+function createPromptWithArg(name, func, useInput, arg) {
+    DOM('promptInput').value = ''
+    DOM('promptTitle').innerText = name
+    DOM('prompt').style.display = 'block'
+    DOM('promptContainer').style.display = 'block'
+    useInput
+        ? DOM('promptButton').addEventListener('click', ()=> func(arg, DOM('promptInput').value))
+        : DOM('promptButton').addEventListener('click', ()=> func(arg))
+}
+
 function createConfirmation(name,desc,no,yes,func,arg) {
     let old_element = document.getElementById("yesConfirm");
     let new_element = old_element.cloneNode(true);

@@ -258,7 +258,13 @@ function makeSavedThemeText(i){
 function useThemeSlot(i){
     // Zero is a stand-in for null in this case as the save unpacking can't handle null very well
     if(data.theme.savedThemes[i] === 0){
-        data.theme.savedThemes[i] = data.theme.currentTheme
+        data.theme.savedThemes[i] = {}
+        const keys = Object.keys(data.theme.currentTheme)
+        const values = Object.values(data.theme.currentTheme)
+        for (let j = 0; j < keys.length; j++) {
+            console.log(keys[j])
+            data.theme.savedThemes[i][keys[j]] = values[j]
+        }
     }
     else {
         const keys = Object.keys(data.theme.savedThemes[i])
@@ -275,6 +281,27 @@ function useThemeSlot(i){
 function resetThemeSlot(i){
     data.theme.savedThemes[i] = 0
     DOM(`savedTheme${i}`).innerHTML = makeSavedThemeText(i)
+}
+
+function exportTheme(i){
+    const exportedDataText = document.createElement("textarea")
+    exportedDataText.value = JSON.stringify(data.theme.savedThemes[i])
+    document.body.appendChild(exportedDataText)
+
+    exportedDataText.select()
+    exportedDataText.setSelectionRange(0, 99999)
+
+    document.execCommand("copy")
+    document.body.removeChild(exportedDataText)
+    showNotification(`The Theme in Slot ${i} has been copied to the clipboard!`)
+}
+
+function importTheme(i, themeData){
+    data.theme.savedThemes[i] = JSON.parse(themeData)
+    DOM(`savedTheme${i}`).innerHTML = makeSavedThemeText(i)
+
+    showNotification(`Successfully imported Theme to Slot ${i}!`)
+    closeModal('prompt')
 }
 
 function updateThemeDefaults(){
@@ -311,6 +338,7 @@ function loadTheme(){
     }
 }
 
+
 function resetTheme(){
     const keys = Object.keys(data.theme.defaultTheme)
     const values = Object.values(data.theme.defaultTheme)
@@ -324,7 +352,7 @@ function initThemeControlHTML(){
     const container = DOM('themeControlContainer')
     for (let i = 0; i < themeSettings.length; i++) {
         let setting = document.createElement('button')
-        setting.className = 'setting'
+        setting.className = 'themeSetting'
         setting.id = `themeSetting${i}`
         setting.innerHTML = displayThemeSetting(i, false)
         setting.addEventListener('click', () => toggleThemeSetting(i))
@@ -348,13 +376,26 @@ function initThemeControlHTML(){
         savedReset.innerHTML = 'Reset'
         savedReset.addEventListener('click', () => resetThemeSlot(i))
 
+        let exportButton = document.createElement('img')
+        exportButton.className = 'exportThemeButton'
+        exportButton.src = 'res/upload.png'
+        exportButton.addEventListener('click', () => exportTheme(i))
+
+        let importButton = document.createElement('img')
+        importButton.className = 'importThemeButton'
+        importButton.src = 'res/download.png'
+        importButton.addEventListener('click', () => createPromptWithArg('Import Theme!', importTheme, true, i))
+
         savedWrapper.appendChild(saved)
+        savedWrapper.appendChild(exportButton)
+        savedWrapper.appendChild(importButton)
         savedWrapper.appendChild(savedReset)
         container.appendChild(savedWrapper)
     }
 
     let reset = document.createElement('button')
     reset.className = 'savedTheme'
+    reset.id = 'themeReset'
     reset.innerText = 'Reset your current Theme to default'
     reset.addEventListener('click', () => resetTheme())
     container.appendChild(reset)

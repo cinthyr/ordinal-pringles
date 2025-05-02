@@ -816,6 +816,14 @@
     background: black;
     border: 2px solid var(--setting-tab-border-color);
 }
+.themeSetting{
+    width: 15rem;
+    height: 3.5rem;
+    margin-top: 0.5rem;
+    color: var(--setting-text-color);
+    background: black;
+    border: 2px solid var(--setting-tab-border-color);
+}
 .saveControl{
     width: 20rem;
     height: 3.2rem;
@@ -850,17 +858,35 @@
     display: inline-block;
 }
 .savedTheme{
-    width: 18rem;
-    height: 3rem;
+    width: 19rem;
+    height: 3.5rem;
     margin-top: 0.5rem;
     color: var(--setting-text-color);
     background: black;
     border: 2px solid var(--setting-border-color);
 }
+.exportThemeButton{
+    position: absolute;
+    bottom: 0.25rem;
+    left: 0.25rem;
+    width: 1rem;
+    height: 1rem;
+    border: none;
+    cursor: pointer;
+}
+.importThemeButton{
+    position: absolute;
+    bottom: 0.25rem;
+    left: 1.5rem;
+    width: 1rem;
+    height: 1rem;
+    border: none;
+    cursor: pointer;
+}
 .savedThemeReset{
     position: absolute;
-    bottom: 0px;
-    right: 0px;
+    bottom: 0;
+    right: 0;
     width: 4rem;
     height: 1.25rem;
     color: var(--setting-text-color);
