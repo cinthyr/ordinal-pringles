@@ -14,9 +14,9 @@ let realmBupData = [
         isDecimal: false
     },
     {
-        desc: "Baseless Boosters boost Factors",
+        desc: "Total Baseless Boosters boost Factors",
         cost: 14,
-        eff: () => data.baselessRealm.amt,
+        eff: () => data.baselessRealm.total+1,
         baseEff: () => 1,
         isDecimal: false
     },
@@ -52,7 +52,7 @@ let realmBupData = [
     {
         desc: "The Ordinal Base boosts Factors (higher is better)",
         cost: 74,
-        eff: () => Math.floor(data.ord.base/2),
+        eff: () => data.ord.base**2,
         baseEff: () => 1,
         isDecimal: false
     },

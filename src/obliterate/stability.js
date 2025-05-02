@@ -135,5 +135,14 @@ function respecStability(i){
     obliterateReset()
 }
 
+function getTotalStableEnergy(){
+    const base = data.stability.energy[0]
+    let invested = 0
+    for (let i = 0; i < data.hyper.isUpgradeSecondary.length; i++) {
+        if(data.hyper.isUpgradeSecondary[i]) ++invested
+    }
+    return base+invested
+}
+
 let getStableEnergy = (i) => data.stability.energy[i]
 let getStableEnergyEffect = (i, j) => getStableEnergy(i) > 0 ? stableEnergyData[i].effects[j].effect() : stableEnergyData[i].effects[j].baseEffect()

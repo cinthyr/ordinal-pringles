@@ -6,5 +6,5 @@ let baseAutoBuyerSpeed = () => D(1).times(chalEffectTotal()).times(getBUPEffect(
 
 function getAutoBuyerSpeed(){
     if(inPurification(2)) return hierarchyData[0].gain().times(data.incrementy.totalCharge).times(getEUPEffect(2, 4))
-    return baseAutoBuyerSpeed().div(getDepthNerf(1)).div(purificationData[1].special())
+    return baseAutoBuyerSpeed().div(purificationData[1].special())
 }

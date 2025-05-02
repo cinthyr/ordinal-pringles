@@ -35,8 +35,14 @@ function updateAllDUPHTML(){
         updateDUPHTML(i)
     }
 }
+
+function makeDrainLevelText(i){
+    if(hasPassiveHypercharge(4)) return `(${getDrainLevel(i)}) <span style="font-size: 0.7rem">[${data.darkness.drains[i]}]</span>`
+    return `(${getDrainLevel(i)})`
+}
+
 function updateDrainHTML(i){
-    DOM(`drain${i}`).innerText = `Drain this Cardinal Upgrade (${getDrainLevel(i)})\n${format(drainCost(i))} Negative Charge`
+    DOM(`drain${i}`).innerHTML = `Drain this Cardinal Upgrade ${makeDrainLevelText(i)}<br>${format(drainCost(i))} Negative Charge`
 }
 function updateAllDrainHTML(){
     for (let i = 0; i < drainData.length; i++) {
@@ -242,7 +248,7 @@ let dupData = [
     {
         text: 'Double Dynamic Cap',
         sign: 'x',
-        extraLevels: () => iup11Effect()+getNormalANREffect(2),
+        extraLevels: () => Math.floor(iup11Effect()+getNormalANREffect(2)),
         cost: ()=> D(1e15).times(dupScaling(1)).pow(1/getOverflowEffect(5)),
         effect: ()=> isTabUnlocked('darkness') ? 2**getTotalDUPLevels(1) : 1
     },
@@ -339,7 +345,8 @@ function respecDrains(){
 function resetDarkness(force = false){
     data.darkness.darkened = false
     for (let i = 0; i < 3; i++) {
-        data.darkness.levels[i] = (hasPassiveUpgrade(10+i) || hasSluggishMilestone(3)) ? data.darkness.levels[i] : 0
+        const passiveSave = i < 2 ? hasPassiveUpgrade(10) : hasPassiveUpgrade(12)
+        data.darkness.levels[i] = (passiveSave || hasSluggishMilestone(3)) ? data.darkness.levels[i] : 0
     }
 
     if(!data.boost.unlocks[4]) data.darkness.negativeCharge = 0

@@ -95,9 +95,9 @@ function getTotalPassiveEnergyInvested(){
     }
     return fromUpgrades
 }
-let getBasePassiveEnergy = () => getTotalFractalEnergyInvested(true) + data.stability.energy[0]
+let getBasePassiveEnergy = () => getTotalFractalEnergyInvested(true) + getTotalStableEnergy()
 let getCurrentPassiveEnergy = () => getBasePassiveEnergy() - getTotalPassiveEnergyInvested()
-let getTotalPassiveEnergy = () => getBasePassiveEnergy() + getTotalPassiveEnergyInvested()
+let getTotalPassiveEnergy = () => getCurrentPassiveEnergy() + getTotalPassiveEnergyInvested()
 
 let hasPassiveUpgrade = (i) => data.obliterate.hasPassiveUpgrade[i]
 function completedPassiveUpgradeRows(){
