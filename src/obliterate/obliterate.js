@@ -56,7 +56,7 @@ function obliterateReset(){
     if(!hasPassiveUpgrade(10)) data.darkness.levels[1] = 0
     if(!hasPassiveUpgrade(12)) data.darkness.levels[2] = 0
     data.darkness.drains = Array(7).fill(0)
-    data.darkness.negativeChargeEnabled = false
+    if(getSimpleSetting('obliterationNegativeChargeReset')) data.darkness.negativeChargeEnabled = false
     data.darkness.darkened = false
     if(!hasPassiveUpgrade(11)) data.darkness.stabilization = 0
 

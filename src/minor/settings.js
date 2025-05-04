@@ -38,6 +38,11 @@ const settingsData = [
         id: 'obliterationAutomationDisable',
         desc: 'Disable Automation on Obliteration',
         default: true
+    },{
+        type: 'Game',
+        id: 'obliterationNegativeChargeReset',
+        desc: 'Disable Negative Charge on Obliteration',
+        default: false
     },
 
     {

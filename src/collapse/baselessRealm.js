@@ -500,7 +500,6 @@ function updateRealmHTML(){
 
 function updateAllRealmBUPHTML(){
     for (let i = 0; i < realmBupData.length; i++) {
-        console.log(hasRealmBUP(i))
         DOM(`rBup${i}`).className = hasRealmBUP(i) ? 'boughtRBup' : 'rBup'
     }
 }
