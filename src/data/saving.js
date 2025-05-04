@@ -269,6 +269,12 @@ function importSave(x) {
         return closeModal('prompt')
     }
 
+    // Easter Egg..... but pointless for now
+    if(x === "very-cool-hat"){
+        createAlert("Oh no", "The gwas are coming. To your house.", "We must hide the chips!")
+        return closeModal('prompt')
+    }
+
     try {
         if(x.length <= 0) {
             DOM('promptContainer').style.display = 'none'

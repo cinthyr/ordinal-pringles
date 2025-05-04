@@ -10,7 +10,7 @@ const controls = {
 document.addEventListener('keydown', (event) => {
     let key = event.key;
     let uppercase = event.key.toUpperCase()
-    if (controls[key] || controls[uppercase]) {
+    if ((controls[key] || controls[uppercase]) && !isModalOpen('prompt')) {
         controls[key].pressed = true;
     }
 }, false);

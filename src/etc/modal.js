@@ -1,54 +1,65 @@
 function createAlert(name,desc,close) {
-    DOM('alertTitle').innerHTML = name
-    DOM('alertContent').innerHTML = desc
-    DOM('closeAlert').innerHTML = close
-    DOM('alert').style.display = 'block'
-    DOM('alertContainer').style.display = 'block'
+    document.getElementById('alertTitle').innerHTML = name
+    document.getElementById('alertContent').innerHTML = desc
+    document.getElementById('closeAlert').innerHTML = close
+    document.getElementById('alert').style.display = 'block'
+    document.getElementById('alertContainer').style.display = 'block'
 }
 
 function createPrompt(name,func,useInput,desc='') {
-    DOM('promptInput').value = ''
-    DOM('promptTitle').innerText = name
-    DOM('promptDesc').innerText = desc
-    DOM('prompt').style.display = 'block'
-    DOM('promptContainer').style.display = 'block'
-    useInput?DOM('promptButton').addEventListener('click', ()=> func(DOM('promptInput').value)):DOM('promptButton').addEventListener('click', ()=> func())
+    document.getElementById('promptInput').value = ''
+    document.getElementById('promptTitle').innerText = name
+    document.getElementById('promptDesc').innerText = desc
+    document.getElementById('prompt').style.display = 'block'
+    document.getElementById('promptContainer').style.display = 'block'
+
+    if(useInput) document.getElementById('promptButton').addEventListener('click', ()=> func(document.getElementById('promptInput').value))
+    else document.getElementById('promptButton').addEventListener('click', ()=> func())
 }
 
 function createPromptWithArg(name, func, useInput, arg) {
-    DOM('promptInput').value = ''
-    DOM('promptTitle').innerText = name
-    DOM('prompt').style.display = 'block'
-    DOM('promptContainer').style.display = 'block'
-    useInput
-        ? DOM('promptButton').addEventListener('click', ()=> func(arg, DOM('promptInput').value))
-        : DOM('promptButton').addEventListener('click', ()=> func(arg))
+    document.getElementById('promptInput').value = ''
+    document.getElementById('promptTitle').innerText = name
+    document.getElementById('prompt').style.display = 'block'
+    document.getElementById('promptContainer').style.display = 'block'
+
+    if(useInput) document.getElementById('promptButton').addEventListener('click', ()=> func(arg, document.getElementById('promptInput').value))
+    else document.getElementById('promptButton').addEventListener('click', ()=> func(arg))
 }
 
 function createConfirmation(name,desc,no,yes,func,arg) {
-    let old_element = document.getElementById("yesConfirm");
-    let new_element = old_element.cloneNode(true);
-    old_element.parentNode.replaceChild(new_element, old_element);
-    old_element = document.getElementById("noConfirm");
-    new_element = old_element.cloneNode(true);
-    old_element.parentNode.replaceChild(new_element, old_element);
+    let oldElement = document.getElementById("yesConfirm");
+    let newElement = oldElement.cloneNode(true);
+    oldElement.parentNode.replaceChild(newElement, oldElement);
+    oldElement = document.getElementById("noConfirm");
+    newElement = oldElement.cloneNode(true);
+    oldElement.parentNode.replaceChild(newElement, oldElement);
+
     document.getElementById('confirmTitle').innerText = name
     document.getElementById('confirmContent').innerText = desc
     document.getElementById('noConfirm').innerText = no
     document.getElementById('yesConfirm').innerText = yes
     document.getElementById('confirm').style.display = 'block'
     document.getElementById('confirmContainer').style.display = 'block'
-    document.getElementById('noConfirm').addEventListener('click', () => {closeModal('confirm')})
-    arg !== undefined?document.getElementById('yesConfirm').addEventListener('click', () => {func(arg);closeModal('confirm')})
-        :document.getElementById('yesConfirm').addEventListener('click', () => {func();closeModal('confirm')})
+    document.getElementById('noConfirm').addEventListener('click', () => closeModal('confirm'))
+
+    if(arg !== undefined) document.getElementById('yesConfirm').addEventListener('click', () => {
+        func(arg)
+        closeModal('confirm')
+    })
+    else document.getElementById('yesConfirm').addEventListener('click', () => {func();closeModal('confirm')})
 }
 function closeModal(i) {
     document.getElementById(`${i}Container`).style.display = 'none'
     document.getElementById(`${i}`).style.display = 'none'
 }
 
+function isModalOpen(name){
+    return document.getElementById(`${name}Container`).style.display === 'block'
+}
+
 function showNotification(text){
-    const notification = DOM(`notification`)
+    const notification = document.getElementById(`notification`)
     notification.innerHTML = text
 
     notification.classList.add('show')
