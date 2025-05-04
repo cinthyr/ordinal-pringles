@@ -498,6 +498,13 @@ function updateRealmHTML(){
     }
 }
 
+function updateAllRealmBUPHTML(){
+    for (let i = 0; i < realmBupData.length; i++) {
+        console.log(hasRealmBUP(i))
+        DOM(`rBup${i}`).className = hasRealmBUP(i) ? 'boughtRBup' : 'rBup'
+    }
+}
+
 function updateRealmBoostersHTML() {
     DOM('rBoosterText').innerHTML = `You have <span style="color: ${getCSSVariable('realm-boosters-text-boosters-color')}; font-family: DosisSemiBold, serif">${(data.baselessRealm.amt)} Baseless Boosters</span> (${(data.baselessRealm.total)} total)`
     DOM('rBoosterTimesText').innerHTML = `You have <span style="color: ${getCSSVariable('realm-boosters-text-boost-count-color')}">Boosted</span> ${data.baselessRealm.times} times`

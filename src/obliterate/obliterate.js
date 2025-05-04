@@ -130,6 +130,7 @@ function obliterateReset(){
     updateAllHyperchargeHTML(true)
     updateAllANRHTML()
     updateRealmHTML()
+    updateAllRealmBUPHTML()
     updateAllAORHTML()
     updateAllPurificationHTML()
 }
