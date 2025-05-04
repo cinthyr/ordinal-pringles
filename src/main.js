@@ -65,7 +65,7 @@ function mainLoop() {
     if (controls["c"].pressed && (data.collapse.times > 0 || data.obliterate.times > 0)) collapseConfirm(true);
 
     // Update Achievements
-    checkAchs()
+    checkAchievements()
 
     // Update HTML
     uHTML.update()

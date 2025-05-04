@@ -407,11 +407,11 @@ function initAchs(){
         ++total
     }
 }
-function checkAchs(){
+function checkAchievements(){
     for (let i= 0; i < achievements.length; i++){
         let ach = DOM(`ach${i}`)
         if(hasAchievement(i) && !data.achs[i]) data.achs[i] = true
-        ach.className = hasAchievement(i) ? 'completedAchievement' : 'achievement'
+        ach.className = hasAchievement(i) ? 'completeAchievement' : 'achievement'
     }
 }
 
