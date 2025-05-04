@@ -259,14 +259,12 @@ let achievements = [
         description: "Baseless Shift Four Times in Any Baseless Realm",
         req: () => data.baseless.shifts > 3
     },
-    /*
     {
 
         name: "The Gator is Proud",
         description: "Baseless Shift Seven Times in Any Baseless Realm",
         req: () => data.baseless.shifts > 6
     },
-     */
     {
         name: "Unknowable Horrors",
         description: "Baseless Shift in the Forgotten Realm",
@@ -285,8 +283,9 @@ let achievements = [
         req: () => data.baseless.shifts > 6  && data.baseless.mode === 2
     },
      */
+
     {
-        name: "Blue, like this 99% PURE WATER!",
+        name: "My Pringles are 99% Pure",
         description: "Complete the first Purification Milestone",
         req: () => hasAOMilestone(0)
     },
@@ -320,11 +319,6 @@ let achievements = [
         description: "Reach 1,000,000 Total Boosters",
         req: () => data.boost.total >= 1e6
     },
-    {
-        name: "The Incrementy Incremented",
-        description: "Reach 1e700 Incrementy",
-        req: () => data.incrementy.amt.gte("1e700")
-    },
 
     {
         name: "YOU HAVE CHIPPED!",
@@ -347,7 +341,7 @@ let achievements = [
         req: () => getAssignedPurityPoints() >= data.purity.isAssigned.length
     },
     {
-        name: "The Omega Pringle?",
+        name: "Mark... it is forbidden ",
         description: "Unlock Energy Upgrade 209",
         req: () => hasTreeUpgrade(209)
     },
@@ -357,8 +351,8 @@ let achievements = [
         req: () => data.incrementy.amt.gte("1e1500")
     },
     {
-        name: "Accessible Cardinals",
-        description: "Reach 1e200 Cardinals",
+        name: "A Bountiful Harvest",
+        description: "Reach 1e100 Cardinals",
         req: () => data.collapse.cardinals.gte(1e200)
     },
     {
